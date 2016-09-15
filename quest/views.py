@@ -46,8 +46,9 @@ def gifts(request):
     settings['view'] = 'gifts'
     page = Page.objects.get(name='gifts')
     page_text_blocks = {pb['name']: pb['value'] for pb in page.pageblock_set.values()}
+    page_imgs = {pi['name']: pi['image'] for pi in page.pageimage_set.values()}
     template = loader.get_template('quest/gifts.html')
-    context = {'settings': settings, 'page_text_blocks': page_text_blocks,}
+    context = {'settings': settings, 'page_text_blocks': page_text_blocks, 'imgs': page_imgs}
     return HttpResponse(template.render(context, request))
 
 def amauters(request):
