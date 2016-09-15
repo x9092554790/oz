@@ -1,0 +1,243 @@
+#text-block-1, #text-block-2 {
+    width: 75%;
+    position: relative;
+    color: white;
+    font-size: 1.5em;
+    margin: 0 auto;
+    text-align: left;
+    white-space: pre-line;
+    max-width: 1230px;
+}
+
+#shedule-container {
+    min-height: 90vh;
+    margin-top: 200px;
+}
+
+i.price, i.clock, i.phone, i.warning {
+    display: inline-block;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+
+}
+
+i.price:after, i.clock:before, i.phone:before, i.warning:before, i.warning:after,
+ul#quest-list li div .players:before {
+    font-family: FontAwesome;
+}
+
+i.price:after {
+    content: '\f158';
+    margin-left: 0.5em;
+}
+
+i.clock:before {
+    content: "\f017";
+    margin-right: 0.5em;
+}
+
+i.phone:before {
+    content: "\f098";
+    margin-right: 0.5em;
+}
+
+/*i.warning:before, i.warning:after {*/
+    /*color: red;*/
+    /*content: "\f06a";*/
+/*}*/
+
+/*i.warning:before {*/
+    /*margin-right: 0.5em;*/
+/*}*/
+
+/*i.warning:after {*/
+    /*margin-left: 0.5em;*/
+/*}*/
+
+i.warning {
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    border-width: 0;
+    background: rgba(0,0,0,0.2);
+}
+i.warning:before {
+    content: url('/static/quest/imgs/exclamation_32.png');
+    margin-right: 1em;
+    float: left;
+}
+
+
+
+
+ul#quest-list {
+    width: 75%;
+    margin: 1em auto;
+    max-width: 1230px;
+    list-style: none;
+    overflow: hidden;
+}
+    ul#quest-list li {
+        float: left;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        width: 200px;
+        height: 200px;
+        position: relative;
+    }
+        ul#quest-list li div {
+            width: 100%;
+            height: 100%;
+
+        }
+            ul#quest-list li div img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            ul#quest-list li div .quest-shadow {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.2) 90%,  rgba(0,0,0,1) 90%, rgba(0,0,0,1) 100%);
+            }
+
+            ul#quest-list li div .title {
+                position: absolute;
+                top: 5px;
+                left: 5px;
+                font-size: 2rem;
+            }
+
+            ul#quest-list li a:hover div .title {
+                text-decoration: underline;
+            }
+
+            ul#quest-list li div .players:before {
+                content: '\f0c0';
+                margin-right: 0.5rem;
+            }
+
+            ul#quest-list li div .players {
+                position: absolute;
+                bottom: 5px;
+                left: 5px;
+                font-size: 2rem;
+            }
+
+ul#discounts-list {
+    width: 75%;
+    margin: 1em auto;
+    max-width: 1230px;
+    list-style: none;
+    overflow: hidden;
+}
+    ul#discounts-list li {
+        margin-bottom: 10px;
+        width: 100%;
+        position: relative;
+        background: rgba(0,0,0, 0.4);
+        border-radius: 10px;
+        border-width: 0;
+        padding: 1em 2em 2em;
+    }
+
+    ul#discounts-list li:hover {
+        cursor: pointer;
+        cursor: hand;
+    }
+        ul#discounts-list li > div {
+            width: 100%;
+            white-space: nowrap;
+            position: relative;
+        }
+            ul#discounts-list li > div > div.img-wrapper {
+                height: 100px;
+                position: relative;
+                float: left;
+                margin-right: 110px;
+            }
+
+            ul#discounts-list li > div > div.img-wrapper > img {
+                object-fit: cover;
+                height: 100%;
+            }
+
+            ul#discounts-list li > div > div.img-wrapper .percent{
+                position: absolute;
+                right: -100px;
+                top: 50%;
+                margin-top: -48px;
+            }
+
+            ul#discounts-list li > div > div.img-wrapper .percent img {
+                width: 100%;
+            }
+
+            ul#discounts-list li > div .title {
+                line-height: 100px;
+                font-size: 2rem;
+                white-space: nowrap;
+                margin-bottom: 5px;
+            }
+
+            ul#discounts-list li > div .clrfix {
+                clear:both;
+            }
+
+             ul#discounts-list li > div .desc {
+                 margin-top: 1em;
+                 max-height: 0;
+                 overflow: hidden;
+                 -webkit-transition: max-height 0.5s;
+                 -moz-transition: max-height 0.5s;
+                 -o-transition: max-height 0.5s;
+                 transition: max-height 0.5s;
+
+             }
+
+             ul#discounts-list li.opened > div .desc {
+                 max-height: 20em;
+             }
+
+             ul#discounts-list li > div .desc > p {
+                 white-space: pre-line;
+             }
+
+             ul#discounts-list li > div .expander-wrap {
+                 position: absolute;
+                 bottom: -2em;
+                 width: 100%;
+                 text-align: center;
+                 display: none;
+             }
+
+             ul#discounts-list li:hover > div .expander-wrap {
+                 display: block;
+             }
+                 ul#discounts-list li > div .expander-wrap .expander {
+                     display: inline-block;
+                 }
+                 ul#discounts-list li > div .expander-wrap .expander:before {
+                     content: '\f078';
+                     font-family: FontAwesome;
+                     color: white;
+                     font-size: 200%;
+                 }
+                 ul#discounts-list li.opened > div .expander-wrap .expander:before {
+                     content: '\f077';
+                     font-family: FontAwesome;
+                     color: white;
+                     font-size: 200%;
+                 }
+
+
+
+
+
+
+
+

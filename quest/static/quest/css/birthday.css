@@ -1,0 +1,63 @@
+.nobody {
+    background: url(/static/quest/imgs/new/kvest_bg.jpg) 50% 100%;
+}
+
+#birthday-container{
+    width: 100%;
+}
+
+#quest-carousel-wrap {
+    position: relative;
+    width: 100%;
+}
+
+#top-shadow {
+    top: 0;
+    left: 0;
+    position: absolute;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.0) 100%);
+    /*background: linear-gradient(to bottom, rgba(0,0,0, 0.2) 0%, rgba(0,0,0, 0) 100%);*/
+    height: 100%;
+    width: 100%;
+}
+
+#text-block-1 {
+    max-width: 1230px;
+    padding: 3em 0;
+    width: 75%;
+    position: relative;
+    color: white;
+    font-size: 1.5em;
+    margin: 0 auto;
+    text-align: left;
+    white-space: pre-line;
+}
+
+
+#title-wrap{
+
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 23%;
+}
+
+#title
+{
+    font-size: 2rem;
+    width: 70%;
+    max-width: 1230px;
+    margin: 0 auto;
+    padding: 1em 3em;
+    white-space: normal;
+    color: white;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.4);
+    border: 0;
+    border-width: 0;
+}
+
+#text-block-1 a {
+    text-decoration: underline;
+    color: gold;
+}

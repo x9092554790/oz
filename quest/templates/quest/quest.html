@@ -1,0 +1,54 @@
+{% extends 'quest/base.html' %}
+{% load staticfiles %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'quest/css/quest.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="quest-container">
+        <div class="quest-carousel" data-quest-id="{{quest.id}}">
+            <div class="quest-carousel-list">
+                <img src="/media/{{quest.getFirstImg.image}}" alt="" data-img-order="{{quest.getFirstImg.order}}" class="quest-img">
+            </div>
+        </div>
+
+        <div class="quest-img-overlay">
+            <div class="quest-overlay-title shadow-text-bold">
+                <p>{{quest.name}}</p>
+            </div>
+
+             <a href="#" class="carousel-nav-left-bt">
+                <div class="carousel-nav-left">
+                </div>
+            </a>
+            <a href="#" class="carousel-nav-right-bt">
+                <div class="carousel-nav-right">
+                </div>
+            </a>
+        </div>
+
+        <div class="quest-desc">
+             <table>
+                <tbody>
+                    <tr class="fixed-height-td">
+                        <td class="first-column">
+                            <i class="clock flow-text">{{quest.duration_min}} мин</i><br/>
+                            <i class="group flow-text">{{quest.players_min}} - {{quest.players_max}}</i>
+                        </td>
+                        <td class="second-column">
+                            <p class="flow-text">
+                                {{quest.desc}}
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'quest/js/quest.js' %}"></script>
+{% endblock %}

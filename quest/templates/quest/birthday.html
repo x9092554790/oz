@@ -1,0 +1,28 @@
+{% extends 'quest/base2.html' %}
+{% load staticfiles %}
+{% load quest_tags %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'quest/css/new/flexslider.css' %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static 'quest/css/birthday.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div id="birthday-container">
+        <div id="quest-carousel-wrap">
+            {% quest_carousel 'carousel-1' imgs  %}
+            <div id="top-shadow"></div>
+
+            <div id="title-wrap">
+                <h2 id="title">{{ blocks.text_block1 }}</h2>
+            </div>
+        </div>
+
+        <p id="text-block-1">{{ blocks.text_block2|safe }}</p>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'quest/js/common.js' %}"></script>
+    <script src="{% static 'quest/js/carousel2.js' %}"></script>
+    <script src="{% static 'quest/js/birthday.js' %}"></script>
+{% endblock %}

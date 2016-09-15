@@ -1,0 +1,28 @@
+#text-block-1 {
+    width: 75%;
+    padding-bottom: 3em;
+    padding-top: 3em;
+    position: relative;
+    color: white;
+    font-size: 1.5em;
+    margin: 0 auto;
+    text-align: left;
+    white-space: pre-line;
+    max-width: 1230px;
+}
+
+
+#contacts-container {
+    min-height: 90vh;
+    margin-top: 200px;
+}
+
+#gis-wrapper {
+    width: 100%;
+    text-align: center;
+}
+
+#gis-wrapper iframe {
+    max-width: 1230px;
+    width: 75%;
+}

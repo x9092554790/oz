@@ -1,0 +1,63 @@
+{% extends 'quest/base.html' %}
+{% load staticfiles %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'quest/css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <div style="margin-bottom: 10px; max-width: 99vw; max-height: 300px; overflow: hidden; position: relative" id="imgs_container">
+        <canvas id="imgs_canvas" height="450" width="2000" style="width: 2000px; height: 450px; min-width: 300px"></canvas>
+        <div class="logo-overlay">
+            <a href="#" class="brand-logo-big"></a>
+            <div class="info-line">
+                <div class="social-line">
+                    <a href="{{ settings.vk_group_url }}" class="vk" target="_blank">
+                        <div>
+                        </div>
+                    </a>
+                    <a href="{{settings.instagram_group_url}}" class="instagram"  target="_blank">
+                        <div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="add-line">
+                    <a href="{% url 'gifts' %}" class="gift" target="_blank">
+                        <div>
+                            Сертификат
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="quest-container">
+        {% for quest in quests %}
+            <div class="col s12 m6 l4 quest-item-container">
+                <div class="quest-item">
+                    <a href="{% url 'quest' quest.id %}">
+                        <img src="/media/{{quest.getLogo}}"/>
+                        <div class="quest-img-overlay"></div>
+                        {% if quest.in_construct %}
+                            <div class="in-construct-back">
+                            </div>
+                            <div class="in-construct-text">
+                                В разработке
+                            </div>
+                        {% endif%}
+                        <div class="quest-title shadow-text-bold">{{quest.name}}</div>
+                        <div class="quest-duration-desc shadow-text-normal"><i class="clock">{{quest.duration_min}} мин</i></div>
+                        <div class="quest-players-desc shadow-text-normal"><i class="group">{{quest.players_min}} - {{quest.players_max}}</i></div>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'quest/js/photo-widget.js' %}"></script>
+{% endblock %}

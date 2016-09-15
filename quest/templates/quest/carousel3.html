@@ -1,0 +1,22 @@
+{% load staticfiles %}
+<div class="flexslider" id="{{ id }}">
+    <ul class="slider_d">
+        {% for item in items %}
+            <li {% if forloop.first %}class="activ"{% endif %} style='background-image: url("/media/{{item.image}}")'>
+                 <p class="title">
+                    {% if 'url' in item  %}
+                        <a href="{{ item.url }}">{{item.title}}</a>
+                    {% endif %}
+                </p>
+            </li>
+        {% endfor %}
+    </ul>
+    <ul class="flex-direction-nav">
+        <li class="flex-nav-prev arr_l">
+            <a class="flex-prev"> <img src="{% static 'quest/imgs/new/arrow_l.png' %}" alt=""/></a>
+        </li>
+        <li class="flex-nav-next arr_r">
+            <a class="flex-next"> <img src="{% static 'quest/imgs/new/arrow_r.png' %}" alt=""/></a>
+        </li>
+    </ul>
+</div>

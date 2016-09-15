@@ -1,0 +1,20 @@
+<div class="quest-carousel-container" id="{{ id }}">
+    {% for item in items %}
+    <div data-order="{{item.order}}" class="quest-carousel-item">
+        <img src="{{'/media/'|add:item.image}}"/>
+        {% if 'title' in item  %}
+        <p class="quest-title">
+            {% if 'url' in item  %}
+                <a href="{{ item.url }}">{{item.title}}</a>
+            {% endif %}
+        </p>
+        {% endif %}
+    </div>
+    {% endfor %}
+    <div class="quest-carousel-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+    </div>
+    <div class="quest-carousel-right">
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+    </div>
+</div>

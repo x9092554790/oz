@@ -1,0 +1,52 @@
+{% extends 'quest/base2.html' %}
+{% load staticfiles %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'quest/css/shedule.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div id="shedule-container">
+        <p id="text-block-1">{{ page_text_blocks.text_block1|safe }}</p>
+        <ul id="quest-list">
+        {% for quest in quests %}
+            <li>
+                <a href="{% url 'quest' quest.id %}">
+                    <div>
+                        <img src="/media/{{quest.getLogo}}">
+                        <div class="quest-shadow"></div>
+                        <span class="title">{{ quest.name }}</span>
+                        <span class="players">{{quest.players_min}} - {{quest.players_max}}</span>
+                    </div>
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
+
+        <p id="text-block-2">{{ page_text_blocks.text_block2|safe }}</p>
+
+        <ul id="discounts-list">
+            {% for disc in discounts %}
+            <li id="discount_{{ disc.id }}">
+                <div>
+                    <span class="title">{{ disc.name }}</span>
+                    <div class="img-wrapper">
+                        <img src="/media/{{disc.image}}" alt="{{ disc.desc }}">
+                        <div class="percent">
+                            <img src="{% static disc.getPerUrl %}" alt="{{ disc.value }}">
+                        </div>
+                    </div>
+                    <div class="clrfix"></div>
+                    <div class="desc"><p>{{ disc.desc }}</p></div>
+                    <div class="expander-wrap">
+                        <span class="expander"></span>
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'quest/js/shedule.js' %}" type="text/javascript"></script>
+{% endblock %}

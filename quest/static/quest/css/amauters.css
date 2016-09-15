@@ -1,0 +1,151 @@
+.quest-carousel-wrap {
+    position: relative;
+}
+
+#block-transition-1 {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to bottom, transparent 0%, black 100%);
+    position: absolute;
+    bottom: 0;
+}
+
+#block-transition-2 {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to bottom, black 0%, rgba(64, 0, 0, 1) 100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+#block-transition-23 {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to bottom, rgba(64, 0, 0, 1) 0%, rgba(0, 0, 0, 0.2) 7%, rgba(0, 0, 0, 0.2) 93%,  rgba(64, 0, 0, 1) 100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#block-transition-3 {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to bottom, rgba(64, 0, 0, 1) 0%, rgb(55, 3, 64) 100%);
+    position: absolute;
+    top: 0;
+    z-index: -1;
+}
+
+#block-transition-34 {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to bottom, rgba(55, 3, 64, 1) 0%, rgba(0, 0, 0, 0.2) 7%, rgba(0, 0, 0, 0.2) 93%,  rgba(55, 3, 64, 1) 100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#block-transition-4 {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to bottom, rgba(55, 3, 64, 1) 0%, rgba(0,0,200,1) 100%);
+    position: absolute;
+    top: 0;
+    z-index: -1;
+}
+
+#block-transition-45 {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,200,1) 0%, rgba(0,0,0,0.2) 7%, rgba(0,0,0,0.2) 100%);
+    position: absolute;
+    top: 0;
+}
+
+.amauters-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+#block1 {
+    position: relative;
+    height: 93vh;
+    min-height: 450px;
+    background-size: cover;
+}
+
+.block {
+    position: relative;
+}
+
+.block-text2 {
+    white-space: pre-line;
+    width: 80%;
+    margin: 0 auto;
+    color: white;
+    text-shadow: 0px 1px 1px grey, 0px 2px 1px #404040, 0px 3px 1px #000000;
+    font-size: 1.8rem;
+    line-height: 2rem;
+}
+
+.block-text2.big {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    line-height: 3rem;
+}
+
+.block-text-wrap {
+    position: relative;
+    text-align: center;
+}
+
+#text-block-1, #text-block-2 {
+    position: relative;
+}
+
+#text-block-2 {
+    width: 50%;
+}
+
+#block-text-wrap-1 {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding-bottom: 100px;
+}
+
+.down-bt {
+    background-image: url("/static/quest/imgs/down.svg");
+    background-position-x: 50%;
+    background-position-y: 50%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 100%;
+
+}
+
+#all-quests-btn {
+    display: block;
+    margin-top: 2em;
+    text-align: center;
+}
+
+#all-quests-btn > a {
+    padding: 5px 15px;
+    border: 2px solid white;
+    border-radius: 5px;
+}
+
+#all-quests-btn > a:hover {
+    box-shadow: 3px 3px 3px black;
+}
+
+#next-bt-1 {
+    position: absolute;
+    bottom: 0;
+}

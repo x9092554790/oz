@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Quest OZ</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'quest/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'quest/css/base.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'quest/css/materialize.min.css' %}">
+
+    {% block css %}{% endblock %}
+    <script src="{% static 'quest/js/jquery-3.1.0.min.js' %}"></script>
+    <script src="{% static 'quest/js/materialize.min.js' %}"></script>
+    <script src="{% static 'quest/js/base.js' %}"></script>
+    <script src="//vk.com/js/api/openapi.js?122" type="text/javascript"></script>
+
+</head>
+<body class="body-back">
+    <nav class="main-menu-nav">
+       <div class="nav-wrapper">
+          <a href="#!" class="brand-logo"></a>
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+          <ul class="left hide-on-med-and-down">
+            <li><a href="{% url 'index' %}">Квесты</a></li>
+            <li><a href="{% url 'amauters' %}">Новичкам</a></li>
+            <li><a href="{% url 'birthday' %}">Дни Рождения/Корпоративы/Праздники</a></li>
+            <li><a href="{% url 'gifts' %}">Подарочные Сертификаты</a></li>
+            <li><a href="{% url 'shedule' %}">Расписание и стоимость</a></li>
+            <li><a href="{% url 'animators' %}">Услуга Аниматора для детей 6-9 лет</a></li>
+            <li><a href="{% url 'contacts' %}">Контакты</a></li>
+          </ul>
+          <ul class="side-nav" id="mobile-demo">
+            <li><a href="{% url 'index' %}">Квесты</a></li>
+            <li><a href="{% url 'amauters' %}">Новичкам</a></li>
+            <li><a href="{% url 'birthday' %}">Дни Рождения/Корпоративы/Праздники</a></li>
+            <li><a href="{% url 'gifts' %}">Подарочные Сертификаты</a></li>
+            <li><a href="{% url 'shedule' %}">Расписание и стоимость</a></li>
+            <li><a href="{% url 'animators' %}">Услуга Аниматора для детей 6-9 лет</a></li>
+            <li><a href="{% url 'contacts' %}">Контакты</a></li>
+          </ul>
+          <ul class="right">
+            <li>
+                <a class="phone" href="tel:{{settings.phone_full}}">{{settings.phone}}</a>
+            </li>
+          </ul>
+       </div>
+    </nav>
+
+    <div class="main-content">
+    {% block content %}
+    {% endblock %}
+    </div>
+
+    <footer class="page-footer main-footer">
+      <div class="footer-copyright">
+        <div class="container">
+            © 2016 OZ Квесты в Реальности
+            <a class="grey-text text-lighten-4 right" href="">Ссылки</a>
+        </div>
+      </div>
+    </footer>
+
+</body>
+{% block js %}{% endblock %}
+</html>

@@ -1,0 +1,64 @@
+{% extends 'quest/base2.html' %}
+{% load staticfiles %}
+{% load quest_tags %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'quest/css/new/flexslider.css' %}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{% static 'quest/css/amauters.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="amauters-container">
+        <div id="block1" class="cycle-background" style="background-image: url('/media/{{ page_imgs.panoram }}')">
+             <div class="block-text-wrap" id="block-text-wrap-1">
+                <div class="block-transition" id="block-transition-1"></div>
+                <p class="block-text2 big" id="text-block-1">{{page_text_blocks.block_1}}</p>
+                <p class="block-text2" id="text-block-2">{{page_text_blocks.block_2}}</p>
+            </div>
+            <a href="#" class="down-bt" id="next-bt-1"></a>
+        </div>
+        <div class="block" id="block2">
+            <div class="block-text-wrap">
+                <div class="block-transition" id="block-transition-2"></div>
+                <p class="block-text2 big" >{{page_text_blocks.block_3}}</p>
+                <p class="block-text2">{{page_text_blocks.block_4}}</p>
+            </div>
+            <div class="quest-carousel-wrap">
+                {% quest_carousel 'carousel-1' quest_imgs  carousel_options %}
+                <div id="block-transition-23"></div>
+            </div>
+        </div>
+        <div class="block">
+            <div class="block-text-wrap">
+                <div class="block-transition" id="block-transition-3"></div>
+                <p class="block-text2 big" >{{page_text_blocks.block_5}}</p>
+                <p class="block-text2">{{page_text_blocks.block_6}}</p>
+            </div>
+            <div class="quest-carousel-wrap">
+                {% quest_carousel 'carousel-2' quest_imgs2  carousel_options %}
+                <div id="block-transition-34"></div>
+            </div>
+        </div>
+        <div class="block">
+            <div class="block-text-wrap">
+                <div class="block-transition" id="block-transition-4"></div>
+                <p class="block-text2 big">{{page_text_blocks.block_7}}</p>
+                <p class="block-text2">
+                    {{page_text_blocks.block_8}}
+                    <span id="all-quests-btn">
+                        <a href="{% url 'index'%}">Все квесты</a>
+                    </span>
+                </p>
+            </div>
+            <div class="quest-carousel-wrap">
+                {% quest_carousel 'carousel-3' quest_imgs3  carousel_options %}
+                <div id="block-transition-45"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'quest/js/common.js' %}"></script>
+    <script src="{% static 'quest/js/carousel2.js' %}"></script>
+    <script src="{% static 'quest/js/amauters.js' %}"></script>
+{% endblock %}

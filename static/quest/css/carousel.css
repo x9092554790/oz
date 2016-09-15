@@ -1,0 +1,88 @@
+.quest-carousel-container {
+    width: 100%;
+    min-height: 100px;
+    position: relative;
+}
+
+.quest-carousel-item {
+    width: 100%;
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    transition-property: opacity;
+    transition-duration: 1s;
+}
+
+.quest-carousel-item.active {
+    position: static;
+    opacity: 1;
+}
+
+.quest-carousel-item img {
+    width: 100%;
+}
+
+.quest-carousel-item .quest-title {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    text-align: center;
+    white-space: nowrap;
+    padding-bottom: 100px;
+    font-size: 2rem;
+    color: white;
+    text-shadow: black 1px 1px 1px;
+}
+
+.quest-carousel-item .quest-title a {
+    color: white;
+}
+
+.quest-carousel-item .quest-title a:hover {
+    text-decoration: underline;
+}
+
+.quest-carousel-left {
+    height: 50px;
+    top: 50%;
+    left: 10px;
+    margin-top: -25px;
+    position: absolute;
+    cursor: hand;
+    cursor: pointer;
+    display: table;
+    text-align: center;
+
+}
+
+.quest-carousel-right {
+    height: 50px;
+    top: 50%;
+    right: 10px;
+    margin-top: -25px;
+    position: absolute;
+    cursor: hand;
+    cursor: pointer;
+    display: table;
+    text-align: center;
+
+}
+
+.quest-carousel-left i {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 2em;
+    color: white;
+    text-shadow: black 2px 2px 2px;
+}
+
+.quest-carousel-right i {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 2em;
+    color: white;
+    text-shadow: black 2px 2px 2px;
+}
+
+

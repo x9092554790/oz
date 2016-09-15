@@ -1,0 +1,102 @@
+.nobody {
+  background: url(/static/quest/imgs/new/kvest_bg.jpg) 50% 100%; }
+
+.carousel-block {
+  display: inline-block;
+  float: left; }
+
+.kvest_title span {
+  position: relative;
+  line-height: 1;
+}
+  .kvest_title.age_14 span:before {
+    content: url(/static/quest/imgs/14+.png);
+    position: absolute;
+    right: -50px;
+    top: -10px; }
+  .kvest_title span:after {
+    content: url(/static/quest/imgs/new/under_title.png);
+    display: block;
+
+    /*position: absolute;*/
+    /*left: calc(50% - 121px);*/
+    /*bottom: -40px;*/
+  }
+
+.kvest > .container {
+  max-width: 1920px; }
+.kvest .carousel-button-left,
+.slick-next {
+  position: absolute;
+  cursor: pointer;
+  width: 29px;
+  height: 104px;
+  z-index: 1;
+  top: 370px; }
+.kvest .carousel-button-left {
+  background: url("/static/quest/imgs/new/arrow_l.png") no-repeat center;
+  left: 250px; }
+.slick-next {
+  background: url("/static/quest/imgs/new/arrow_r.png") no-repeat center;
+  right: 250px; }
+
+.gps {
+  font-family: 'Roboto-Medium';
+  padding: 30px 0 45px; }
+  .gps > span {
+    padding-left: 40px;
+    position: relative; }
+    .gps > span:before {
+      content: url(/static/quest/imgs/new/gps.png);
+      position: absolute;
+      left: 0px;
+      top: 0; }
+  .gps input {
+    width: 160px; }
+
+.indenture {
+  line-height: 2.7rem; }
+
+.description {
+  max-width: 980px;
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 135px;
+  font-size: 1.9rem;
+  font-family: 'Raleway-Regular'; }
+  .description h2 {
+    font-size: 5rem;
+    line-height: 3.6rem;
+    font-family: 'Raleway-5Bold';
+    padding: 0px 0 30px; }
+  .description .data {
+    background: url(/static/quest/imgs/new/data.png) no-repeat;
+    max-width: 324px;
+    height: 55px;
+    font-family: 'Roboto-Medium';
+    padding: 15px 0;
+    margin: 0 auto;
+    left: 0; }
+    .description .data .time, .description .data .members {
+      left: -15px; }
+    .description .data:before {
+      content: ""; }
+
+.vidget {
+  margin-top: 88px; }
+  .vidget span {
+    padding-bottom: 15px;
+    line-height: 2.2rem;
+    display: block; }
+
+
+
+.quest-in-construct {
+    margin: 0 auto;
+    display: block;
+    margin-top: 160px;
+    margin-bottom: 50px;
+}
+
+/*# sourceMappingURL=kvest.css.map */
+

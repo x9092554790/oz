@@ -1,0 +1,187 @@
+html {
+    display: flex;
+    min-height: 100%;
+    max-width: 100%;
+}
+
+body {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+}
+
+.brand-logo {
+    background-image: url("/static/quest/imgs/logo.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 70px;
+    height: 100%;
+}
+
+.brand-logo-big {
+    position: absolute;
+    background-image: url("/static/quest/imgs/logo.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: 50%;
+    width: 100%;
+    height: 100%;
+}
+
+a.phone {
+    background-image: url("/static/quest/imgs/phone.svg");
+    background-size: 30px 30px, contain;
+    background-repeat: no-repeat;
+    background-position-y: 50%;
+    background-position-x: 95%;
+    padding-right: 50px;
+    font-size: 1.5rem;
+}
+
+.body-background {
+    background-color: #3e2e42;
+}
+
+.menu-background {
+    background-color: indigo;
+}
+
+.body-back {
+    #background-color: #3e2e42;
+    background: linear-gradient(to bottom, rgba(75,0,130,1) 0%, rgba(62,46,66,1) 50%, rgba(75,0,130,1) 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 100%, cover;
+}
+
+.main-menu-nav {
+    background-color: indigo;
+    margin: 0;
+    flex: 0 0 auto;
+}
+
+.main-menu-nav ul.left {
+    margin-left: 80px;
+}
+
+.main-menu-nav ul.side-nav {
+    background-color: indigo;
+    z-index: 1001;
+}
+
+.main-menu-nav ul.side-nav a {
+    color: white;
+}
+
+nav.main-menu-nav ul a:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.main-footer {
+    margin-top: 0 !important;
+    flex: 0 0 auto;
+    background-color: indigo !important;
+}
+
+i.clock {
+    background-image: url("/static/quest/imgs/clock.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-left: 2em;
+}
+
+i.group {
+    background-image: url("/static/quest/imgs/group.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-left: 2em;
+}
+
+a.vk {
+    background-image: url("/static/quest/imgs/vk-social-logotype.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+a.instagram {
+    background-image: url("/static/quest/imgs/instagram-logo.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+a.gift {
+    background-image: url("/static/quest/imgs/gift.svg");
+}
+
+
+.social-line {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+.info-line {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-between;
+    height: 40px;
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+.add-line {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+.social-line a, .add-line a{
+    min-width: 40px;
+    margin-right: 10px;
+    border-radius: 20px;
+    border: 2px solid transparent;
+    z-index: 2;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: 50%;
+    padding-top: 36px;
+    color: yellow;
+    text-shadow: 1px 1px 1px black;
+}
+
+.social-line a:hover, .add-line a:hover {
+    border: 2px solid yellow;
+}
+
+.main-menu-nav ul.side-nav a{
+    white-space: nowrap;
+}
+
+.main-menu-nav ul.left {
+    margin-right: 200px;
+    max-height: 100%;
+    overflow: hidden;
+}
+
+.main-menu-nav ul.right {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+
+
+
+

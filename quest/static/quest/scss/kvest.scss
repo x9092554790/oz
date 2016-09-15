@@ -1,0 +1,124 @@
+.nobody {
+	background: url(../images/kvest_bg.jpg) 50% 100%;
+}
+
+.carousel-block {
+	display: inline-block;
+	float: left;
+}
+
+.kvest_title {
+	span {
+		position: relative;
+
+		&:before {
+			content: url(../images/sixteen.png);
+			position: absolute;
+			right: -50px;
+    		top: -10px;
+		}
+
+		&:after {
+			content: url(../images/under_title.png);
+			position: absolute;
+		    left: calc(50% - 121px);
+			bottom: -40px;
+		}
+	}
+}
+
+.kvest {
+
+	& > .container	{
+		max-width: 1920px;
+	}
+
+	.carousel-button-left, 
+	.carousel-button-right{
+	    position: absolute;
+	    cursor: pointer;
+	    width: 29px;
+	    height: 104px;
+	    z-index: 1;
+	    top: 370px;
+	}
+
+	.carousel-button-left{
+	  	background: url("../images/arrow_l.png") no-repeat center ; 
+	  	left: 250px;
+	}
+
+	.carousel-button-right{
+	   	background: url("../images/arrow_r.png") no-repeat center;
+	   	right: 250px; 
+	}
+}
+
+.gps {
+	font-family: 'Roboto-Medium';
+	padding: 30px 0 45px;
+
+	& > span {
+		padding-left: 40px;
+		position: relative;
+
+		&:before {
+			content: url(../images/gps.png);
+			position: absolute;
+			left: 0px;
+			top: 0;
+		}
+	}
+
+	input {
+		width: 160px;
+	}
+}
+
+.indenture {
+	line-height: 2.7rem;
+}
+
+.description {
+	max-width: 980px;
+	margin: 0 auto;
+	text-align: center;
+	padding-bottom: 135px;
+	font-size: 1.9rem;
+	font-family: 'Raleway-Regular';
+
+	h2 {
+		font-size: 5rem;
+		line-height: 3.6rem;
+		font-family: 'Raleway-Bold';
+		padding: 0px 0 80px;
+	}
+
+	.data {
+		background: url(../images/data.png) no-repeat;
+		max-width: 324px;
+    	height: 55px;
+    	font-family: 'Roboto-Medium';
+    	padding: 15px 0;
+    	margin: 0 auto;
+    	left: 0;
+
+    	.time, .members {
+		    left: -15px;
+		}
+
+		&:before {
+			content: "";
+		}
+	}
+}
+
+.vidget {
+	margin-top: 88px;
+
+	span {
+		padding-bottom: 15px;
+		line-height: 2.2rem;
+		display: block;
+	}
+}
