@@ -7,6 +7,7 @@ from .models import Page
 from .models import PageImage
 from .models import PageBlock
 from .models import Discount
+from .models import Video
 from django import forms
 
 class QuestImageInline(admin.TabularInline):
@@ -73,3 +74,9 @@ class DiscountAdmin(admin.ModelAdmin):
     list_display = ('name', 'value', 'image', 'type', 'order', 'created')
     fields = ('name', 'value', 'desc', 'image_tag', 'image', 'type', 'order', 'created')
     readonly_fields = ('image_tag', 'created')
+
+@admin.register(Video)
+class VideoAdmin(admin.ModelAdmin):
+    list_display = ('quest', 'name', 'type', 'order', 'created')
+    fields = ('quest', 'name', 'widget', 'desc', 'type', 'order', 'created')
+    readonly_fields = ('created', )

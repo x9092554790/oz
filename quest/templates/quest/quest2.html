@@ -9,7 +9,15 @@
 {% block content %}
 
     {% if not quest.in_construct %}
+        <div class="quest-carousel-wrap2">
         {% quest_carousel 'quest-carousel' quest.getImgs  %}
+        {% with vid=quest.getQuestVid %}
+            {% if vid %}
+            {{ vid.widget | safe}}
+            <i class="fa fa-play-circle video-play" aria-hidden="true"></i>
+        {% endif %}
+        {% endwith %}
+        </div>
     {% else %}
         <img class="quest-in-construct" src="{% static 'quest/imgs/new/develop.png' %}">
     {% endif %}
@@ -42,4 +50,5 @@
     <script src="{% static 'quest/js/common.js' %}"></script>
     <script src="{% static 'quest/js/carousel2.js' %}"></script>
     <script src="{% static 'quest/js/new/quest.js' %}" type="text/javascript"></script>
+    <script src="{% static 'quest/js/video.js' %}" type="text/javascript"></script>
 {% endblock %}

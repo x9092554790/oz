@@ -29,6 +29,12 @@ class Quest(models.Model):
             imgs = self.questimage_set.filter(type="logo")
         return imgs
 
+    def getQuestVid(self):
+        vid = list(self.video_set.filter(type='quest_video')[:1])
+        if vid:
+            return vid[0]
+        return None
+
     def getFirstImg(self):
         imgs = self.questimage_set.get(type='img', order='1')
         return imgs
@@ -149,3 +155,17 @@ class Discount(models.Model):
     def __unicode__(self):
         return self.name
 
+class Video(models.Model):
+    name = models.CharField(max_length=100)
+    quest = models.ForeignKey(Quest, on_delete=models.CASCADE)
+    widget = models.TextField(max_length=4096)
+    desc = models.TextField(max_length=4096, default='')
+    type = models.CharField(max_length=100, null=True)
+    order = models.IntegerField(default=1)
+    created = models.DateTimeField('date created', auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
+    def __unicode__(self):
+        return self.name
