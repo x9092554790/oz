@@ -24,7 +24,7 @@ class Quest(models.Model):
         return logo.image if logo else None
 
     def getImgs(self):
-        imgs = self.questimage_set.filter(type='img').order_by('order')
+        imgs = self.questimage_set.filter(type='ama').order_by('order')
         if not len(imgs):
             imgs = self.questimage_set.filter(type="logo")
         return imgs
