@@ -13,7 +13,7 @@ $(window).ready(function(){
                 player.show();
             else
                 player.hide();
-            player.find('videoplayer_controls_item videoplayer_btn videoplayer_btn_play').click();
+            player.find('.videoplayer_controls_item.videoplayer_btn.videoplayer_btn_play').click();
         }
     }
 
