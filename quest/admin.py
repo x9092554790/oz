@@ -19,7 +19,7 @@ class QuestImageInline(admin.TabularInline):
 class QuestAdmin(admin.ModelAdmin):
     inlines = [QuestImageInline]
     list_display = ('id', 'name', 'desc', 'in_construct', 'order', 'created')
-    fields = ('name', 'desc', 'price_desc','players_desc', 'age_desc', 'age_value',
+    fields = ('name', 'desc', 'seo_title', 'seo_description', 'price_desc','players_desc', 'age_desc', 'age_value',
               'players_min', 'players_max', 'rating', 'duration_min', 'in_construct', 'order')
     def formfield_for_dbfield(self, db_field, **kwargs):
         formfield = super(QuestAdmin, self).formfield_for_dbfield(db_field, **kwargs)
@@ -67,7 +67,7 @@ class PageBlockAdmin(admin.ModelAdmin):
 class PageAdmin(admin.ModelAdmin):
     inlines = [PageImageInline, PageBlockInline]
     list_display = ('name', 'url', 'created')
-    fields = ('name', 'url')
+    fields = ('name', 'url', 'title', 'description')
 
 @admin.register(Discount)
 class DiscountAdmin(admin.ModelAdmin):

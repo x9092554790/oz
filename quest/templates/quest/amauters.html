@@ -11,16 +11,16 @@
         <div id="block1" class="cycle-background" style="background-image: url('/media/{{ page_imgs.panoram }}')">
              <div class="block-text-wrap" id="block-text-wrap-1">
                 <div class="block-transition" id="block-transition-1"></div>
-                <p class="block-text2 big" id="text-block-1">{{page_text_blocks.block_1}}</p>
-                <p class="block-text2" id="text-block-2">{{page_text_blocks.block_2}}</p>
+                <p class="block-text2 big" id="text-block-1">{{page_text_blocks.block_1|safe}}</p>
+                <p class="block-text2" id="text-block-2">{{page_text_blocks.block_2|safe}}</p>
             </div>
             <a href="#" class="down-bt" id="next-bt-1"></a>
         </div>
         <div class="block" id="block2">
             <div class="block-text-wrap">
                 <div class="block-transition" id="block-transition-2"></div>
-                <p class="block-text2 big" >{{page_text_blocks.block_3}}</p>
-                <p class="block-text2">{{page_text_blocks.block_4}}</p>
+                <p class="block-text2 big" >{{page_text_blocks.block_3|safe}}</p>
+                <p class="block-text2">{{page_text_blocks.block_4|safe}}</p>
             </div>
             <div class="quest-carousel-wrap">
                 {% quest_carousel 'carousel-1' quest_imgs  carousel_options %}
@@ -30,8 +30,8 @@
         <div class="block">
             <div class="block-text-wrap">
                 <div class="block-transition" id="block-transition-3"></div>
-                <p class="block-text2 big" >{{page_text_blocks.block_5}}</p>
-                <p class="block-text2">{{page_text_blocks.block_6}}</p>
+                <p class="block-text2 big" >{{page_text_blocks.block_5|safe}}</p>
+                <p class="block-text2">{{page_text_blocks.block_6|safe}}</p>
             </div>
             <div class="quest-carousel-wrap">
                 {% quest_carousel 'carousel-2' quest_imgs2  carousel_options %}
@@ -41,7 +41,7 @@
         <div class="block">
             <div class="block-text-wrap">
                 <div class="block-transition" id="block-transition-4"></div>
-                <p class="block-text2 big">{{page_text_blocks.block_7}}</p>
+                <p class="block-text2 big">{{page_text_blocks.block_7|safe}}</p>
                 <p class="block-text2">
                     {{page_text_blocks.block_8}}
                     <span id="all-quests-btn">

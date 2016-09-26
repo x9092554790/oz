@@ -35,7 +35,7 @@
                 </ul>
 {#                <p class="gps"><span>{{ settings.address }} <span class="phone"><input type="tel" readonly name="phone" id="phone" value="{{ settings.phone }}"></span></span></p>#}
                 <p class="gps"><span>{{ settings.address }} <a href="tel:{{ setting.full_phone }}">{{ settings.phone }}</a></span></p>
-                <p class="indenture">{{quest.desc}}</p>
+                <p class="indenture">{{quest.desc|safe}}</p>
                 <div class="vidget">
                     <span>Расскажите о нас друзьям!</span>
                     <div class="pluso" data-background="transparent" data-options="big,square,line,horizontal,nocounter,theme=04" data-services="vkontakte,odnoklassniki,facebook,twitter,google,moimir"></div>

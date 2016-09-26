@@ -11,14 +11,14 @@ from .models import Discount
 from django.urls import reverse
 import random
 
-
 def index(request):
     quests = Quest.objects.order_by('in_construct', 'order')
     discounts = Discount.objects.order_by('order')
+    page = Page.objects.get(name='index')
     settings = Settings.getDict()
     settings['view'] = 'index'
     template = loader.get_template('quest/index2.html')
-    context = {'quests': quests, 'settings': settings, 'discounts': discounts}
+    context = {'quests': quests, 'settings': settings, 'discounts': discounts, 'page_settings': page}
     return HttpResponse(template.render(context, request))
 
 def quest(request, quest_id):
@@ -26,7 +26,8 @@ def quest(request, quest_id):
     settings = Settings.getDict()
     settings['view'] = 'quest'
     quest = Quest.objects.get(id=quest_id)
-    context = {'quest': quest, 'settings': settings}
+    page_settings = {'title': quest.seo_title, 'description': quest.seo_description}
+    context = {'quest': quest, 'settings': settings, 'page_settings': page_settings}
     return HttpResponse(template.render(context, request))
 
 def quest_get_remain_imgs(request):
@@ -48,7 +49,7 @@ def gifts(request):
     page_text_blocks = {pb['name']: pb['value'] for pb in page.pageblock_set.values()}
     page_imgs = {pi['name']: pi['image'] for pi in page.pageimage_set.values()}
     template = loader.get_template('quest/gifts.html')
-    context = {'settings': settings, 'page_text_blocks': page_text_blocks, 'imgs': page_imgs}
+    context = {'settings': settings, 'page_text_blocks': page_text_blocks, 'imgs': page_imgs, 'page_settings': page}
     return HttpResponse(template.render(context, request))
 
 def amauters(request):
@@ -69,7 +70,7 @@ def amauters(request):
     context = {'settings': settings, 'page_text_blocks': page_text_blocks, 'quest_imgs': imgs,
                'page_imgs': page_imgs,
                'quest_imgs2': imgs2,
-               'quest_imgs3': imgs3, 'carousel_options': {'certainHeight': False}}
+               'quest_imgs3': imgs3, 'carousel_options': {'certainHeight': False}, 'page_settings': page}
     return HttpResponse(template.render(context, request))
 
 def birthday(request):
@@ -79,7 +80,7 @@ def birthday(request):
     page = Page.objects.get(name='birthday')
     page_text_blocks = {pb['name']: pb['value'] for pb in page.pageblock_set.values()}
     imgs = [{'image': i['image'], 'order': i['order'], 'title': i['name']} for i in page.pageimage_set.values('image', 'name', 'order')]
-    context = {'settings': settings, 'blocks': page_text_blocks, 'imgs': imgs}
+    context = {'settings': settings, 'blocks': page_text_blocks, 'imgs': imgs, 'page_settings': page}
     return HttpResponse(template.render(context, request))
 
 def shedule(request):
@@ -90,7 +91,8 @@ def shedule(request):
     page = Page.objects.get(name='shedule')
     page_text_blocks = {pb['name']: pb['value'] for pb in page.pageblock_set.values()}
     template = loader.get_template('quest/shedule.html')
-    context = {'settings': settings, 'page_text_blocks': page_text_blocks, 'quests': quests, 'discounts': discounts}
+    context = {'settings': settings, 'page_text_blocks': page_text_blocks, 'quests': quests, 'discounts': discounts,
+               'page_settings': page}
     return HttpResponse(template.render(context, request))
 
 def animators(request):
@@ -99,7 +101,7 @@ def animators(request):
     page = Page.objects.get(name='animators')
     page_text_blocks = {pb['name']: pb['value'] for pb in page.pageblock_set.values()}
     template = loader.get_template('quest/animators.html')
-    context = {'settings': settings, 'page_text_blocks': page_text_blocks}
+    context = {'settings': settings, 'page_text_blocks': page_text_blocks, 'page_settings': page}
     return HttpResponse(template.render(context, request))
 
 def contacts(request):
@@ -108,5 +110,5 @@ def contacts(request):
     page = Page.objects.get(name='contacts')
     page_text_blocks = {pb['name']: pb['value'] for pb in page.pageblock_set.values()}
     template = loader.get_template('quest/contacts.html')
-    context = {'settings': settings, 'page_text_blocks': page_text_blocks}
+    context = {'settings': settings, 'page_text_blocks': page_text_blocks, 'page_settings': page}
     return HttpResponse(template.render(context, request))
