@@ -10,6 +10,11 @@
     max-width: 1230px;
 }
 
+#banka {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 12.5%;
+}
 
 #gifts-container {
     min-height: 90vh;

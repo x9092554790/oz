@@ -291,6 +291,7 @@ html[xmlns] .flexslider .slides {
 .flexslider .slider_d li {
   overflow: hidden;
   max-width: 100%;
+  width: 100%;
 }
 
 .flexslider .slider_d li img {
