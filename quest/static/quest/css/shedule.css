@@ -17,6 +17,14 @@
     max-width: 1230px;
 }
 
+.text-block h1 {
+    font-size: 200%;
+}
+
+.text-block h2 {
+    font-size: 150%;
+}
+
 .text-block b {
     font-weight: bold;
 }
