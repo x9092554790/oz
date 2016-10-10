@@ -6,7 +6,11 @@
 
 {% block content %}
     <div id="shedule-container">
-        <p id="text-block-1">{{ page_text_blocks.text_block1|safe }}</p>
+        <p class="text-block big">{{ page_text_blocks.text_block1|safe }}</p>
+        <img class="text-img" src="/media/{{ imgs.1.image }}">
+        <p class="text-block big">{{ page_text_blocks.text_block12|safe }}</p>
+        <img class="text-img" src="/media/{{ imgs.2.image }}">
+        <p class="text-block big">{{ page_text_blocks.text_block13|safe }}</p>
         <ul id="quest-list">
         {% for quest in quests %}
             <li>
@@ -22,11 +26,7 @@
         {% endfor %}
         </ul>
 
-        <p id="text-block-2">{{ page_text_blocks.text_block2|safe }}</p>
-		<p id="text-block-2">{{ page_text_blocks.text_block3|safe }}</p>
-		<p id="text-block-2">{{ page_text_blocks.text_block4|safe }}</p>
-		<p id="text-block-2">{{ page_text_blocks.text_block5|safe }}</p>
-		<p id="text-block-2">{{ page_text_blocks.text_block6|safe }}</p>
+        <p class="text-block">{{ page_text_blocks.text_block2|safe }}</p>
 
         <ul id="discounts-list">
             {% for disc in discounts %}
