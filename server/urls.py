@@ -28,7 +28,9 @@ handler500 = 'server.views.handler500'
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', quest.views.index, name='index'),
+    url(r'^err', views.handler404),
     url(r'^quest/', include('quest.urls')),
     url(r'^', include('quest.urls2')),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

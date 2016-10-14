@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
 from quest.models import Settings
+from quest.models import Page
+from quest.models import PageBlock
+
 
 def handler400(request):
     return error(request, 400)
@@ -17,5 +20,11 @@ def handler500(request):
 def error(request, status):
     settings = Settings.getDict()
     settings['view'] = 'error'
-    page_settings = {'title': 'Ошибка', 'description': ''}
-    return render(request, 'error.html', {'settings': settings, 'page_settings': page_settings}, status=status)
+    page = {}
+    content = {}
+    try:
+        page = Page.objects.get(name='error')
+        content = page.pageblock_set.get(name='message')
+    except Exception as ex:
+        pass
+    return render(request, 'error.html', {'settings': settings, 'page_settings': page, 'content': content}, status=status)
