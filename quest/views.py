@@ -27,10 +27,7 @@ def quest(request, quest_id):
     template = loader.get_template('quest/quest2.html')
     settings = Settings.getDict()
     settings['view'] = 'quest'
-    try:
-        quest = Quest.objects.get(id=quest_id)
-    except Exception as ex:
-        raise Http404()
+    quest = Quest.objects.get(id=quest_id)
     page_settings = {'title': quest.seo_title, 'description': quest.seo_description}
     context = {'quest': quest, 'settings': settings, 'page_settings': page_settings}
     return HttpResponse(template.render(context, request))
@@ -137,8 +134,10 @@ def animators(request):
     settings['view'] = 'animators'
     page = Page.objects.get(name='animators')
     page_text_blocks = {pb['name']: pb['value'] for pb in page.pageblock_set.values()}
+    imgs = {i['name']: {'image': i['image'], 'order': i['order']} for i in
+            page.pageimage_set.values('image', 'name', 'order')}
     template = loader.get_template('quest/animators.html')
-    context = {'settings': settings, 'page_text_blocks': page_text_blocks, 'page_settings': page}
+    context = {'settings': settings, 'page_text_blocks': page_text_blocks, 'page_settings': page, 'imgs': imgs}
     return HttpResponse(template.render(context, request))
 
 def contacts(request):

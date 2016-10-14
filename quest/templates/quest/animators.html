@@ -6,7 +6,11 @@
 
 {% block content %}
      <div id="animators-container">
-        <p id="text-block-1">{{ page_text_blocks.text_block1|safe }}</p>
+        <p class="text-block">{{ page_text_blocks.text_block1|safe }}</p>
+        <img class="text-img" src="/media/{{ imgs.1.image }}">
+        <p class="text-block">{{ page_text_blocks.text_block2|safe }}</p>
+        <img class="text-img" src="/media/{{ imgs.2.image }}">
+        <p class="text-block">{{ page_text_blocks.text_block3|safe }}</p>
     </div>
 {% endblock %}
 
