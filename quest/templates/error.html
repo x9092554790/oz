@@ -6,6 +6,6 @@
 
 {% block content %}
     <div class="content error">
-        <h1>Истина где то рядом</h1>
+        {{ content.value|safe }}
     </div>
 {% endblock %}
