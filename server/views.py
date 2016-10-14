@@ -1,12 +1,18 @@
 # -*- coding: utf-8 -*-
-from django.template import loader
-from django.http import HttpResponse
+from django.shortcuts import render
 from quest.models import Settings
 
+def handler400(request):
+    return error(request)
+
+def handler404(request):
+    return error(request)
+
+def handler500(request):
+    return error(request)
 
 def error(request):
     settings = Settings.getDict()
     settings['view'] = 'error'
-    template = loader.get_template('404.html')
-    context = {'settings': settings}
-    return HttpResponse(template.render(context, request))
+    page_settings = {'title': 'Ошибка', 'description': ''}
+    return render(request, 'error.html', {'settings': settings, 'page_settings': page_settings})

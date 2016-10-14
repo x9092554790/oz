@@ -27,7 +27,10 @@ def quest(request, quest_id):
     template = loader.get_template('quest/quest2.html')
     settings = Settings.getDict()
     settings['view'] = 'quest'
-    quest = Quest.objects.get(id=quest_id)
+    try:
+        quest = Quest.objects.get(id=quest_id)
+    except Exception as ex:
+        raise Http404()
     page_settings = {'title': quest.seo_title, 'description': quest.seo_description}
     context = {'quest': quest, 'settings': settings, 'page_settings': page_settings}
     return HttpResponse(template.render(context, request))
