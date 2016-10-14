@@ -14,7 +14,7 @@
         <ul id="quest-list">
         {% for quest in quests %}
             <li>
-                <a href="{% url 'quest' quest.id %}">
+                <a href="{{ quest.getUrl }}">
                     <div>
                         <img src="/media/{{quest.getLogo}}">
                         <div class="quest-shadow"></div>

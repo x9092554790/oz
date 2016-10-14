@@ -18,9 +18,17 @@ from django.contrib import admin
 import quest.views
 from django.conf.urls.static import static
 from django.conf import settings
+from django.views.generic import TemplateView
+import views
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', quest.views.index, name='index'),
-    url(r'^quest/', include('quest.urls'))
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    url(r'^quest/', include('quest.urls')),
+    url(r'^404testing/$', views.error),
+    url(r'^', include('quest.urls2')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+handler400 = 'views.error'
+handler404 = 'views.error'

@@ -1,0 +1,32 @@
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.content {
+    display: flex;
+    flex: 1 0;
+}
+.content.error {
+    min-height: 400px;
+}
+
+.content.error h1:before {
+    content: "";
+    height: 50%;
+    float: left;
+    width: 100%;
+    margin-bottom: -1em;
+}
+
+.content.error h1 {
+    text-align: center;
+    width: 100%;
+    line-height: 2em;
+    font-size: 2em;
+}

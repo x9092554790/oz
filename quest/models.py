@@ -9,6 +9,7 @@ class Quest(models.Model):
     desc = models.CharField(max_length=4096)
     seo_title = models.CharField(max_length=255, null=True)
     seo_description = models.TextField(max_length=4096, null=True)
+    seo_url = models.CharField(max_length=255, null=True)
     price_desc = models.CharField(max_length=4096, default="")
     players_desc = models.CharField(max_length=4096, default="")
     age_desc = models.CharField(max_length=4096, default="")
@@ -20,6 +21,9 @@ class Quest(models.Model):
     in_construct = models.BooleanField(default=False)
     order = models.IntegerField(default=1)
     created = models.DateTimeField('date created', auto_now_add=True)
+
+    def getUrl(self):
+        return "/quest/" + (self.seo_url if self.seo_url else self.id)  + "/"
 
     def getLogo(self):
         logo = self.questimage_set.get(type="logo")
@@ -79,6 +83,7 @@ class Page(models.Model):
     title = models.CharField(max_length=255, null=True)
     description = models.TextField(max_length=4096, null=True)
     created = models.DateTimeField('date created', auto_now_add=True)
+
     def __str__(self):
         return self.name
 
