@@ -20,16 +20,15 @@ from django.conf.urls.static import static
 from django.conf import settings
 import views
 
-handler400 = 'server.views.error'
-handler403 = 'server.views.error'
-handler404 = 'server.views.error'
-handler500 = 'server.views.error'
+handler400 = 'server.views.handler400'
+handler403 = 'server.views.handler403'
+handler404 = 'server.views.handler404'
+handler500 = 'server.views.handler500'
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', quest.views.index, name='index'),
     url(r'^quest/', include('quest.urls')),
-    url(r'^404testing/$', views.error),
     url(r'^', include('quest.urls2')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
