@@ -36,16 +36,18 @@ def quest_rewrite(request, quest_name):
     template = loader.get_template('quest/quest2.html')
     settings = Settings.getDict()
     settings['view'] = 'quest'
-    quest = Quest.objects.get(seo_url=quest_name)
-    if not quest:
+    try:
+        quest = Quest.objects.get(seo_url=quest_name)
+    except Exception as ex:
         raise Http404()
     page_settings = {'title': quest.seo_title, 'description': quest.seo_description}
     context = {'quest': quest, 'settings': settings, 'page_settings': page_settings}
     return HttpResponse(template.render(context, request))
 
 def page_rewrite(request, page_url):
-    page = Page.objects.get(url=page_url)
-    if not page:
+    try:
+        page = Page.objects.get(url=page_url)
+    except Exception as ex:
         raise Http404()
     if page.name == 'gifts':
         return gifts(request)
