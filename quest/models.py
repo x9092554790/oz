@@ -10,6 +10,8 @@ class Quest(models.Model):
     seo_title = models.CharField(max_length=255, null=True)
     seo_description = models.TextField(max_length=4096, null=True)
     seo_url = models.CharField(max_length=255, null=True)
+    address = models.CharField(max_length=255, null=True)
+    phone = models.CharField(max_length=255, null=True)
     price_desc = models.CharField(max_length=4096, default="")
     players_desc = models.CharField(max_length=4096, default="")
     age_desc = models.CharField(max_length=4096, default="")
@@ -19,6 +21,7 @@ class Quest(models.Model):
     rating = models.DecimalField(default=100.0, decimal_places=2, max_digits=5)
     duration_min = models.IntegerField(default=60)
     in_construct = models.BooleanField(default=False)
+    is_partner = models.BooleanField(default=False)
     order = models.IntegerField(default=1)
     created = models.DateTimeField('date created', auto_now_add=True)
 

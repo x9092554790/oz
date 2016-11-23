@@ -34,7 +34,18 @@
                     <li class="members">{{quest.players_min}} - {{quest.players_max}}</li>
                 </ul>
 {#                <p class="gps"><span>{{ settings.address }} <span class="phone"><input type="tel" readonly name="phone" id="phone" value="{{ settings.phone }}"></span></span></p>#}
-                <p class="gps"><span>{{ settings.address }} <a href="tel:{{ setting.full_phone }}">{{ settings.phone }}</a></span></p>
+                <p class="gps"><span>
+                    {% if quest.address %}
+                        {{ quest.address }}
+                    {% else %}
+                        {{ settings.address }}
+                    {% endif %}
+                    , тел. 
+                    {% if quest.phone %}
+                        <a href="tel:{{ quest.phone }}">{{ quest.phone }}</a></span></p>
+                    {% else %}
+                        <a href="tel:{{ setting.full_phone }}">{{ settings.phone }}</a></span></p>
+                    {% endif %}
                 <p class="indenture">{{quest.desc|safe}}</p>
                 <div class="vidget">
                     <span>Расскажите о нас друзьям!</span>

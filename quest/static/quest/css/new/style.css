@@ -567,3 +567,11 @@ footer {
       bottom: 12px;
       right: 12px;
 }
+
+.kvest_list.list_partners {
+  justify-content: space-between;
+}
+
+.kvest_list.list_partners li .info h2 {
+  text-align: left;
+}
