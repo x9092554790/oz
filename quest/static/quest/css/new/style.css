@@ -575,3 +575,13 @@ footer {
 .kvest_list.list_partners li .info h2 {
   text-align: left;
 }
+
+.partners_kvests {
+  padding-top: 50px;
+  padding-bottom: 0;
+}
+
+.partners_kvests .partners_title h2{
+  text-align: center;
+}
+
