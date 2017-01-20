@@ -137,8 +137,10 @@ def animators(request):
     settings['view'] = 'animators'
     page = Page.objects.get(name='animators')
     page_text_blocks = {pb['name']: pb['value'] for pb in page.pageblock_set.values()}
+    imgs = {i['name']: {'image': i['image'], 'order': i['order']} for i in
+            page.pageimage_set.values('image', 'name', 'order')}
     template = loader.get_template('quest/animators.html')
-    context = {'settings': settings, 'page_text_blocks': page_text_blocks, 'page_settings': page}
+    context = {'settings': settings, 'page_text_blocks': page_text_blocks, 'page_settings': page, 'imgs': imgs}
     return HttpResponse(template.render(context, request))
 
 def contacts(request):

@@ -11,6 +11,15 @@
     max-width: 1230px;
 }
 
+h1 {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 1.25em;
+    font-weight: bold;
+}
 
 #contacts-container {
     min-height: 90vh;
@@ -25,4 +34,23 @@
 #gis-wrapper iframe {
     max-width: 1230px;
     width: 75%;
+}
+
+i.phone:before, i.email:before, i.location:before {
+    font-family: FontAwesome;
+}
+
+i.phone:before {
+    content: "\f098";
+    margin-right: 0.5em;
+}
+
+i.email:before {
+    content: "\f0e0";
+    margin-right: 0.5em;
+}
+
+i.location:before {
+    content: "\f041";
+    margin-right: 0.5em;
 }

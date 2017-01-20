@@ -1,4 +1,12 @@
-#text-block-1, #text-block-2 {
+.text-img {
+    display: block;
+    width: 75%;
+    margin: 2em auto;
+    max-width: 1230px;
+    min-width: 320px;
+}
+
+.text-block {
     width: 75%;
     position: relative;
     color: white;
@@ -7,6 +15,30 @@
     text-align: left;
     white-space: pre-line;
     max-width: 1230px;
+}
+
+.text-block h1 {
+    font-size: 200%;
+}
+
+.text-block h2 {
+    font-size: 150%;
+}
+
+.text-block b {
+    font-weight: bold;
+}
+
+.text-block .underline {
+    width: 100%;
+    display: inline-block;
+    padding-bottom: 0.2em;
+    border-bottom: 1px solid white;
+}
+
+
+.text-block.big {
+    font-size: 1.33em;
 }
 
 #shedule-container {
