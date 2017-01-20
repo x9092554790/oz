@@ -3,6 +3,31 @@ from django.db import models
 import django.utils.html
 import datetime
 from django.conf import settings as app_settings
+import os
+
+class Banner(models.Model):
+    name = models.CharField(max_length=255)
+    type = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, null=True)
+    content = models.TextField(null=True)
+    img = models.ImageField(upload_to="banners")
+    def image_tag(self):
+        return django.utils.html.format_html(u'<img src="/media/{}" />', self.img)
+    image_tag.short_description = "Preview"
+
+    def image_tag_prev(self):
+        return django.utils.html.format_html(u'<img style="height: 50px; object-fit: cover;" src="/media/{}" />',
+                                             self.img)
+    image_tag_prev.short_description = "Small Preview"
+
+    order = models.IntegerField(default=1)
+    created = models.DateTimeField('date created', auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
+    def __unicode__(self):
+        return self.name
 
 class Quest(models.Model):
     name = models.CharField(max_length=255)
@@ -22,6 +47,7 @@ class Quest(models.Model):
     duration_min = models.IntegerField(default=60)
     in_construct = models.BooleanField(default=False)
     is_partner = models.BooleanField(default=False)
+    view_count = models.IntegerField(default=0)
     order = models.IntegerField(default=1)
     created = models.DateTimeField('date created', auto_now_add=True)
 

@@ -40,4 +40,19 @@ if (typeof common.funcs == 'undefined')
         return copy;
     }
 
+    $.notiny.addTheme('custom', {
+        notification_class: 'notiny-theme-custom notiny-default-vars'
+    });
+
+    this.notify = function(text){
+        $.notiny({ text: text, 'position': 'fluid-bottom',
+        autohide: false, theme: 'custom',
+        image: '/static/quest/imgs/notification2.svg'});
+    };
+
+    this.isMobile = function()
+    {
+        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    }
+
 }).call(common.funcs);

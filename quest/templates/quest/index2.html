@@ -26,6 +26,9 @@
                             {% endif %}>
                         <a href="{{ quest.getUrl }}">
                             <div class="shadow"></div>
+
+                            <div class="add_shadow"></div>
+
                             <div class="info">
                                 <h2>{{quest.name}}</h2>
                                 <span class="adress">{{ settings.address }} <span class="phone"><input readonly type="tel" name="phone" id="phone" value="{{ settings.phone }}"></span></span>
@@ -34,6 +37,15 @@
                                     <li class="members">{{quest.players_min}} - {{quest.players_max}}</li>
                                 </ul>
                             </div>
+
+                            <div class="add_info">
+                                <span>
+                                    {{ quest.view_count }}
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                </span>
+                                <div class="tooltip">Сегодня этим квестом интересовалось {{ quest.view_count }} человек(а)</div>
+                            </div>
+
                         </a>
                     </li>
                         {% endif %}
@@ -98,6 +110,7 @@
                                         {% endif %}>
                                         <a href="{{ quest.getUrl }}">
                                             <div class="shadow"></div>
+                                            <div class="add_shadow"></div>
                                             <div class="info">
                                                 <h2>{{quest.name}}</h2>
                                                 <span class="adress">{{ quest.address }} <span class="phone"><input readonly type="tel" name="phone" id="phone" value="{{ quest.phone }}"></span></span>
@@ -105,6 +118,13 @@
                                                     <li class="time">{{quest.duration_min}} мин.</li>
                                                     <li class="members">{{quest.players_min}} - {{quest.players_max}}</li>
                                                 </ul>
+                                            </div>
+                                            <div class="add_info">
+                                                <span>
+                                                    {{ quest.view_count }}
+                                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                                </span>
+                                                <div class="tooltip">Сегодня этим квестом интересовалось {{ quest.view_count }} человек(а)</div>
                                             </div>
                                         </a>
                                     </li>

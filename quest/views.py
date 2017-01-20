@@ -9,18 +9,20 @@ from django.http import JsonResponse
 from .models import Settings
 from .models import Page
 from .models import Discount
+from .models import Banner
 from django.urls import reverse
 import random
 from django.http import Http404
 
 def index(request):
     quests = Quest.objects.order_by('in_construct', 'order')
+    top_banner = Banner.objects.filter(type='top').order_by('order')
     discounts = Discount.objects.order_by('order')
     page = Page.objects.get(name='index')
     settings = Settings.getDict()
     settings['view'] = 'index'
     template = loader.get_template('quest/index2.html')
-    context = {'quests': quests, 'settings': settings, 'discounts': discounts, 'page_settings': page}
+    context = {'quests': quests, 'settings': settings, 'discounts': discounts, 'page_settings': page, 'top_banner': top_banner}
     return HttpResponse(template.render(context, request))
 
 def quest(request, quest_id):
@@ -151,3 +153,19 @@ def contacts(request):
     template = loader.get_template('quest/contacts.html')
     context = {'settings': settings, 'page_text_blocks': page_text_blocks, 'page_settings': page}
     return HttpResponse(template.render(context, request))
+
+def ajax_get_visitors(request):
+    settings = Settings.getDict()
+    return JsonResponse({'visitors': settings.get('visitors_count', None)})
+
+def franchise(request):
+    settings = Settings.getDict()
+    settings['view'] = 'franchise'
+    template = loader.get_template('quest/franchise.html')
+    page = Page.objects.get(name='franchise')
+    page_text_blocks = {pb['name']: pb['value'] for pb in page.pageblock_set.values()}
+    imgs = [{'image': i['image'], 'order': i['order'], 'title': i['name']} for i in page.pageimage_set.values('image', 'name', 'order')]
+    context = {'settings': settings, 'blocks': page_text_blocks, 'imgs': imgs, 'page_settings': page}
+    return HttpResponse(template.render(context, request))
+
+
