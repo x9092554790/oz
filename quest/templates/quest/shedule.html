@@ -12,6 +12,7 @@
         <p class="text-block big">{{ page_text_blocks.text_block13|safe }}</p>
         <ul id="quest-list">
         {% for quest in quests %}
+            {% if not quest.is_partner %}
             <li>
                 <a href="{{ quest.getUrl }}">
                     <div>
@@ -22,11 +23,16 @@
                     </div>
                 </a>
             </li>
+            {% endif %}
         {% endfor %}
         </ul>
 
         <div class="text-block">{{ page_text_blocks.text_block2|safe }}</div>
 
+        <br/>
+        <br/>
+
+        <!--
         <ul id="discounts-list">
             {% for disc in discounts %}
             <li id="discount_{{ disc.id }}">
@@ -47,6 +53,7 @@
             </li>
             {% endfor %}
         </ul>
+        -->
     </div>
 {% endblock %}
 

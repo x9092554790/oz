@@ -15,12 +15,13 @@
     }
 
     .swiper-slide .title {
-        font-size: 3.5em;
+        font-size: 2.9rem;
+        font-weight: bold;
         text-shadow: 1px 1px 2px black;
     }
 
     .swiper-slide .content {
-        font-size: 1.5em;
+        font-size: 100%;
         margin-top: 2em;
         white-space: pre-line;
     }
@@ -47,6 +48,9 @@
         <!-- Slides -->
         {% for slide in top_banner %}
         <div class="swiper-slide">
+            {% if slide.url and slide.url.strip %}
+                <a href="{{ slide.url }}">
+            {% endif %}
             <img src="media/{{ slide.img }}"/>
             <div class="info">
                 <div class="title">{{ slide.title }}</div>
@@ -54,6 +58,9 @@
                 {{ slide.content|safe }}
                 </div>
             </div>
+            {% if slide.url and slide.url.strip %}
+                </a>
+            {% endif %}
         </div>
         {% endfor %}
     </div>
@@ -76,7 +83,7 @@
         loop: true,
         autoplay: 5000,
         paginationClickable: true,
-        grabCursor: true,
+        grabCursor: false,
 
         // If we need pagination
         pagination: '.swiper-pagination',

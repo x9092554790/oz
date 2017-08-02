@@ -14,7 +14,7 @@ urlpatterns = [
     url(r'^shedule', views.shedule, name='shedule'),
     url(r'^animators', views.animators, name='animators'),
     url(r'^contacts', views.contacts, name='contacts'),
-    url(r'^frinchise', views.franchise, name='franchise'),
+    url(r'^franchise', views.franchise, name='franchise'),
 
 
     url(r'^(?P<quest_name>[a-zA-Z0-9-]+)/$', views.quest_rewrite, name='quest-rewrite'),

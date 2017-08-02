@@ -1,13 +1,18 @@
 {% extends 'quest/base2.html' %}
 {% load staticfiles %}
+{% load quest_tags %}
 {% block css %}
-    <link rel="stylesheet" href="{% static 'quest/css/gifts.css' %}">
+    <link rel="stylesheet" href="{% static 'quest/css/gifts.css' %}?v={% settings_value 'VERSION' %}">
 {% endblock %}
 
 {% block content %}
     <div id="gifts-container">
-        <img id="banka" src="/media/{{ imgs.podarochniy_certificat }}" alt=""/>
-        <p id="text-block-1">{{ page_text_blocks.text_block1|safe }}</p>
+        <div class="head">
+        </div>
+        <div class="text">
+            <img id="banka" src="/media/{{ imgs.podarochniy_certificat }}" alt=""/>
+            <p id="text-block-1">{{ page_text_blocks.text_block1|safe }}</p>
+        </div>
     </div>
 {% endblock %}
 

@@ -42,7 +42,7 @@ $(document).ready(function(){
 
     if(!common.funcs.isMobile())
     {
-        $('.add_info').mouseleave(function(){
+        $('.tooltip_container').mouseleave(function(){
             var tooltip = $(this).find('.tooltip');
             tooltip.hide();
             return false;
@@ -54,7 +54,7 @@ $(document).ready(function(){
     }
 
 
-     $('.add_info').click(function(e){
+     $('.tooltip_container').click(function(e){
         e.preventDefault();
         var tooltip = $(this).find('.tooltip');
         if(tooltip.is(":visible"))
@@ -63,9 +63,17 @@ $(document).ready(function(){
             tooltip.show();
          return false;
     });
-    $('.add_info .tooltip').click(function(e){
+    $('.tooltip_container .tooltip').click(function(e){
         e.preventDefault();
         $(this).hide();
+        return false;
+    });
+
+    $('.btn[data-href]').click(function(e){
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        var url = $(this).attr('data-href');
+        window.location = url;
         return false;
     });
 });

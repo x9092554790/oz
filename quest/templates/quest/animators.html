@@ -1,15 +1,25 @@
 {% extends 'quest/base2.html' %}
 {% load staticfiles %}
+{% load quest_tags %}
 {% block css %}
-    <link rel="stylesheet" href="{% static 'quest/css/animators.css' %}">
+    <link rel="stylesheet" href="{% static 'quest/css/animators.css' %}?v={% settings_value 'VERSION' %}">
 {% endblock %}
 
 {% block content %}
      <div id="animators-container">
-        <p class="text-block">{{ page_text_blocks.text_block1|safe }}</p>
-        <!--<p class="text-block">{{ page_text_blocks.text_block2|safe }}</p>-->
-        <img class="text-img" src="/media/{{ imgs.2.image }}">
-        <p class="text-block">{{ page_text_blocks.text_block3|safe }}</p>
+         <div class="space-1"></div>
+         <div class="text">
+            <p class="text-block">{{ page_text_blocks.text_block1|safe }}</p>
+         </div>
+            <!--<p class="text-block">{{ page_text_blocks.text_block2|safe }}</p>-->
+         <div class="space-2"></div>
+         <div class="text">
+            <img class="text-img" src="/media/{{ imgs.2.image }}">
+         </div>
+         <div class="space-3"></div>
+         <div class="text">
+            <p class="text-block">{{ page_text_blocks.text_block3|safe }}</p>
+         </div>
     </div>
 {% endblock %}
 

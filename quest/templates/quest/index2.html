@@ -29,23 +29,44 @@
 
                             <div class="add_shadow"></div>
 
+                            {% if quest.title_desc or quest.is_new %}
+                            <div class="quest_left_add">
+                                {% if quest.is_new %}
+                                <img src="{% static 'quest/imgs/new/new.png' %}">
+                                {% endif %}
+                                {% if quest.title_desc%}
+                                <div class="quest_title_desc">
+                                {{ quest.title_desc }}
+                                </div>
+                                {% endif %}
+                            </div>
+                            {% endif %}
+
                             <div class="info">
                                 <h2>{{quest.name}}</h2>
-                                <span class="adress">{{ settings.address }} <span class="phone"><input readonly type="tel" name="phone" id="phone" value="{{ settings.phone }}"></span></span>
+                                <span class="adress">{% if  quest.address %}{{ quest.address }}{% else %} {{ settings.address }} {% endif %} <span class="phone"><input readonly type="tel" name="phone" id="phone" value="{{ settings.phone }}"></span></span>
                                 <ul class="data">
                                     <li class="time">{{quest.duration_min}} мин.</li>
-                                    <li class="members">{{quest.players_min}} - {{quest.players_max}}</li>
+                                    <li class="members">{{quest.players_min}} - {{quest.players_max}} {% if quest.players_add %}<span data-href="/price#warning_add_peoples" style="display: inline;" class="btn">( +{{quest.players_add}} )</span>{% endif %}</li>
                                 </ul>
+
                             </div>
 
-                            <div class="add_info">
+                            <div class="add_info tooltip_container">
                                 <span>
                                     {{ quest.view_count }}
                                     <i class="fa fa-eye" aria-hidden="true"></i>
                                 </span>
                                 <div class="tooltip">Сегодня этим квестом интересовалось {{ quest.view_count }} человек(а)</div>
+
                             </div>
 
+                            {% if quest.is_animator %}
+                            <div class="anim tooltip_container">
+                                <img src="{% static 'quest/imgs/animator.svg' %}">
+                                <div class="tooltip">Для этого квеста доступна услуга "Аниматор".</div>
+                            </div>
+                            {% endif %}
                         </a>
                     </li>
                         {% endif %}
@@ -54,6 +75,7 @@
             </div>
         </div>
     </div>
+    <!--
     <div class="shares carousel">
         <div class="container">
             <div class="row">
@@ -84,6 +106,7 @@
             </div>
         </div>
     </div>
+    -->
     <div class="partners_kvests">
         <div class="container">
             <div class="row">
@@ -144,7 +167,8 @@
                     <h2>НАШИ ДРУЗЬЯ</h2>
                 </div>
                 <ul>
-                      <li class="flex s-col-2"><a href="http://questguild.ru" target="_blank"><img src="{% static 'quest/imgs/partners/quest-guild-widget-2.png' %}" alt="Гильдия Квестов"></a></li>
+                      <li class="flex s-col-2"><a href="http://questlike.ru" target="_blank"><img src="{% static 'quest/imgs/partners/questlike_logo.jpg' %}" alt="Questlike Мониторинг Квестов"></a></li>
+                      <li class="flex s-col-2"><a href="http://kma.questguild.ru/" target="_blank"><img src="{% static 'quest/imgs/partners/quest-guild-widget-2.png' %}" alt="Гильдия Квестов"></a></li>
 {#                    <li class="flex s-col-2"><img src="{% static 'quest/imgs/new/zendesk.png' %}" alt="zendesk"></li>#}
 {#                    <li class="flex s-col-2"><img src="{% static 'quest/imgs/new/nextel.png' %}" alt="nextel"></li>#}
 {#                    <li class="flex s-col-2"><img src="{% static 'quest/imgs/new/acer.png' %}" alt="acer"></li>#}

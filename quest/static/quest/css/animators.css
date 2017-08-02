@@ -1,3 +1,38 @@
+div.text {
+    padding-top: 2em;
+    padding-bottom: 2em;
+    background-image: url("/static/quest/imgs/new/body_bg.jpg");
+    background-size: cover;
+}
+
+div.space-1, div.space-2, div.space-3 {
+    height: 400px;
+    background-attachment: fixed;
+    background-position: 50% 0 !important;
+    background-size: cover;
+}
+
+div.space-2 {
+    background-image: url("/media/quest_3/4");
+}
+
+div.space-3 {
+    background-image: url("/media/quest_5/6");
+}
+
+
+body {
+    background: url("/media/quest_4/6") !important;
+    background-attachment: fixed !important;
+    background-position: 50% 0 !important;
+}
+
+@media only screen and (max-device-width: 1024px) {
+    body {
+        background-attachment: scroll !important;
+    }
+}
+
 
 .text-block {
     width: 75%;

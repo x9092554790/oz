@@ -8,9 +8,10 @@ import os
 class Banner(models.Model):
     name = models.CharField(max_length=255)
     type = models.CharField(max_length=255)
-    title = models.CharField(max_length=255, null=True)
-    content = models.TextField(null=True)
-    img = models.ImageField(upload_to="banners")
+    title = models.CharField(max_length=255, null=True, blank=True)
+    content = models.TextField(null=True, blank=True)
+    url = models.CharField(max_length=255, null=True, blank=True)
+    img = models.ImageField(upload_to="banners", blank=True)
     def image_tag(self):
         return django.utils.html.format_html(u'<img src="/media/{}" />', self.img)
     image_tag.short_description = "Preview"
@@ -32,6 +33,7 @@ class Banner(models.Model):
 class Quest(models.Model):
     name = models.CharField(max_length=255)
     desc = models.CharField(max_length=4096)
+    title_desc = models.CharField(max_length=255, null=True, blank=True)
     seo_title = models.CharField(max_length=255, null=True)
     seo_description = models.TextField(max_length=4096, null=True)
     seo_url = models.CharField(max_length=255, null=True)
@@ -43,10 +45,13 @@ class Quest(models.Model):
     age_value = models.IntegerField(default=0)
     players_min = models.IntegerField(default=2)
     players_max = models.IntegerField(default=4)
+    players_add = models.IntegerField(default=3, blank=True)
     rating = models.DecimalField(default=100.0, decimal_places=2, max_digits=5)
     duration_min = models.IntegerField(default=60)
     in_construct = models.BooleanField(default=False)
+    is_new = models.BooleanField(default=False)
     is_partner = models.BooleanField(default=False)
+    is_animator = models.BooleanField(default=True, blank=True)
     view_count = models.IntegerField(default=0)
     order = models.IntegerField(default=1)
     created = models.DateTimeField('date created', auto_now_add=True)

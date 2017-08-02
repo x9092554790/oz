@@ -1,3 +1,23 @@
+div.text {
+    background-image: url("/static/quest/imgs/new/body_bg.jpg");
+}
+
+div.head {
+    height: 400px;
+}
+
+body {
+    background: url("/static/quest/imgs/banka.jpg") !important;
+    background-attachment: fixed !important;
+    background-position: 50% 0 !important;
+}
+
+@media only screen and (max-device-width: 1024px) {
+    body {
+        background-attachment: scroll !important;
+    }
+}
+
 #text-block-1 {
     width: 75%;
     padding-bottom: 3em;
@@ -17,7 +37,6 @@
 }
 
 #gifts-container {
-    min-height: 90vh;
     margin-top: 200px;
 }
 

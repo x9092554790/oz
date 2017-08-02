@@ -1,0 +1,18 @@
+{% extends 'quest/base2.html' %}
+{% load staticfiles %}
+{% load quest_tags %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'quest/css/kubik.css' %}?v={% settings_value 'VERSION' %}">
+{% endblock %}
+
+{% block content %}
+    <div id="kubik-container">
+        <iframe src="https://script.google.com/macros/s/AKfycbxJNyzf_irWCSCR9Qij6qBPOu3daB-RpYmE0F0yWVO-/dev" allowtransparency="true"></iframe>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <!--
+    <script src="{% static 'quest/js/photo-widget.js' %}"></script>
+    -->
+{% endblock %}

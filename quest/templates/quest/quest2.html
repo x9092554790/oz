@@ -3,21 +3,35 @@
 {% load quest_tags %}
 {% block css %}
     <link rel="stylesheet" href="{% static 'quest/css/new/flexslider.css' %}" type="text/css" media="screen" />
-    <link  href="{% static 'quest/css/new/kvest.css' %}" rel="stylesheet" type="text/css" media="all">
+    <link  href="{% static 'quest/css/new/kvest.css' %}?v={% settings_value 'VERSION' %}" rel="stylesheet" type="text/css" media="all">
 {% endblock %}
 
 {% block content %}
 
     {% if not quest.in_construct %}
         <div class="quest-carousel-wrap2">
-        {% quest_carousel 'quest-carousel' quest.getImgs  %}
-        {% with vid=quest.getQuestVid %}
-            {% if vid %}
-            {{ vid.widget | safe}}
-            <i class="fa fa-play-circle video-play" aria-hidden="true"></i>
-        {% endif %}
-        {% endwith %}
-        <div class="quest-carousel-shadow"></div>
+            {% quest_carousel 'quest-carousel' quest.getImgs  %}
+            {% with vid=quest.getQuestVid %}
+                {% if vid %}
+                {{ vid.widget | safe}}
+                <i class="fa fa-play-circle video-play" aria-hidden="true"></i>
+            {% endif %}
+            {% endwith %}
+            <div class="quest-carousel-shadow"></div>
+            <div class="quest-carousel-info-add add_info tooltip_container">
+                <span>
+                    {{ quest.view_count }}
+                    <i class="fa fa-eye" aria-hidden="true"></i>
+                </span>
+                <div class="tooltip">Сегодня этим квестом интересовалось {{ quest.view_count }} человек(а)</div>
+            </div>
+            <div class="quest-carousel-shadow-add"></div>
+            {% if quest.is_animator %}
+            <div class="anim tooltip_container">
+                <img src="{% static 'quest/imgs/animator.svg' %}">
+                <div class="tooltip">Для этого квеста доступна услуга "Аниматор".</div>
+            </div>
+            {% endif %}
         </div>
     {% else %}
         <img class="quest-in-construct" src="{% static 'quest/imgs/new/develop.png' %}">
@@ -31,7 +45,8 @@
                 <h2 class="kvest_title {% if quest.age_value > 0 %}age_{{ quest.age_value }}{% endif %}"><span>{{quest.name}}</span></h2>
                 <ul class="data">
                     <li class="time">{{quest.duration_min}} мин.</li>
-                    <li class="members">{{quest.players_min}} - {{quest.players_max}}</li>
+                    <li class="members">{{quest.players_min}} - {{quest.players_max}} {% if quest.players_add %}<span data-href="/price#warning_add_peoples" style="display: inline;" class="btn">( +{{quest.players_add}} )</span>{% endif %}</li>
+{#                    <li class="members">{{quest.players_min}} - {{quest.players_max}}</li>#}
                 </ul>
 {#                <p class="gps"><span>{{ settings.address }} <span class="phone"><input type="tel" readonly name="phone" id="phone" value="{{ settings.phone }}"></span></span></p>#}
                 <p class="gps"><span>

@@ -41,11 +41,19 @@ class Command(BaseCommand):
             dx.value = 3
             dx.save()
 
-        if created:
-            visitors.value = random.randint(int(min.value), int(max.value))
-        else:
-            visitors.value = random.randint(int(visitors.value) - int(dx.value), int(visitors.value) + int(dx.value))
+        val = 0
 
+        if created:
+            val = random.randint(int(min.value), int(max.value))
+        else:
+            val = random.randint(int(visitors.value) - int(dx.value), int(visitors.value) + int(dx.value))
+
+        if val > int(max.value):
+            val = max.value
+        elif val < int(min.value):
+            val = min.value
+
+        visitors.value = val
 
         visitors.save()
 

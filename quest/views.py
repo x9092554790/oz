@@ -164,8 +164,16 @@ def franchise(request):
     template = loader.get_template('quest/franchise.html')
     page = Page.objects.get(name='franchise')
     page_text_blocks = {pb['name']: pb['value'] for pb in page.pageblock_set.values()}
-    imgs = [{'image': i['image'], 'order': i['order'], 'title': i['name']} for i in page.pageimage_set.values('image', 'name', 'order')]
+    imgs = {i['name']: {'image': i['image'], 'order': i['order']} for i in
+            page.pageimage_set.values('image', 'name', 'order')}
     context = {'settings': settings, 'blocks': page_text_blocks, 'imgs': imgs, 'page_settings': page}
+    return HttpResponse(template.render(context, request))
+
+def kubik(request):
+    settings = Settings.getDict()
+    settings['view'] = 'kubik'
+    template = loader.get_template('quest/kubik.html')
+    context = {'settings': settings}
     return HttpResponse(template.render(context, request))
 
 
