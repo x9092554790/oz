@@ -50,6 +50,7 @@ class Quest(models.Model):
     duration_min = models.IntegerField(default=60)
     in_construct = models.BooleanField(default=False)
     is_new = models.BooleanField(default=False)
+    is_with_actor = models.BooleanField(default=False)
     is_partner = models.BooleanField(default=False)
     is_animator = models.BooleanField(default=True, blank=True)
     view_count = models.IntegerField(default=0)

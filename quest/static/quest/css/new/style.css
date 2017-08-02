@@ -855,6 +855,7 @@ li.members span.btn {
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 1;
 }
 
 .quest_title_desc {
@@ -875,6 +876,16 @@ li.members span.btn {
     -webkit-transform-origin: 0 0; /* Для Safari, Chrome, iOS */
     -o-transform-origin: 0 0; /* Для Opera */
     transform-origin: 0 0;
+}
+
+.quest_actor {
+    background: red;
+    font-size: 2rem;
+    padding: 0.5rem;
+    margin: 0.3rem;
+    border-radius: 0.3rem;
+    box-shadow: 2px 2px 2px black;
+    z-index: 1;
 }
 
 .kvest_list li .add_shadow.left {

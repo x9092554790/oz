@@ -27,8 +27,8 @@ class QuestImageInline(admin.TabularInline):
 class QuestAdmin(admin.ModelAdmin):
     inlines = [QuestImageInline]
     list_display = ('id', 'name', 'desc', 'in_construct', 'order', 'created')
-    fields = ('name', 'desc', 'title_desc', 'address', 'phone', 'seo_url', 'seo_title', 'seo_description', 'price_desc','players_desc', 'age_desc', 'age_value',
-              'players_min', 'players_max', 'players_add', 'rating', 'duration_min', 'is_new', 'in_construct', 'is_partner', 'is_animator', 'order')
+    fields = ('name', 'desc', 'title_desc', 'address', 'phone', 'seo_url', 'seo_title', 'seo_description', 'price_desc', 'players_desc', 'age_desc', 'age_value',
+              'players_min', 'players_max', 'players_add', 'rating', 'duration_min', 'is_new', 'is_with_actor', 'in_construct', 'is_partner', 'is_animator', 'order')
     def formfield_for_dbfield(self, db_field, **kwargs):
         formfield = super(QuestAdmin, self).formfield_for_dbfield(db_field, **kwargs)
         if db_field.name in ['desc', 'price_desc', 'players_desc', 'age_desc']:

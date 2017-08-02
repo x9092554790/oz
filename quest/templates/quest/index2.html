@@ -29,7 +29,7 @@
 
                             <div class="add_shadow"></div>
 
-                            {% if quest.title_desc or quest.is_new %}
+                            {% if quest.title_desc or quest.is_new or quest.is_with_actor %}
                             <div class="quest_left_add">
                                 {% if quest.is_new %}
                                 <img src="{% static 'quest/imgs/new/new.png' %}">
@@ -37,6 +37,13 @@
                                 {% if quest.title_desc%}
                                 <div class="quest_title_desc">
                                 {{ quest.title_desc }}
+                                </div>
+                                {% endif %}
+
+                                {% if quest.is_with_actor %}
+                                <div class="quest_actor tooltip_container">
+                                    ДОБАВЬ АКТЕРА
+                                    <div class="tooltip">Рекомендуем добавить актера</div>
                                 </div>
                                 {% endif %}
                             </div>
