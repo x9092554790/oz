@@ -12,6 +12,8 @@ class Banner(models.Model):
     content = models.TextField(null=True, blank=True)
     url = models.CharField(max_length=255, null=True, blank=True)
     img = models.ImageField(upload_to="banners", blank=True)
+    video = models.CharField(max_length=255, null=True, blank=True)
+    slide_delay = models.IntegerField('Slide delay', null=True, blank=True)
     def image_tag(self):
         return django.utils.html.format_html(u'<img src="/media/{}" />', self.img)
     image_tag.short_description = "Preview"
