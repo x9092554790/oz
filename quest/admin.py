@@ -15,7 +15,7 @@ from .models import Banner
 @admin.register(Banner)
 class BannerAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'title', 'type', 'order', 'created')
-    fields = ('name', 'type', 'url', 'title', 'content', 'image_tag', 'img', 'order', 'created')
+    fields = ('name', 'type', 'url', 'title', 'content', 'image_tag', 'img', 'video', 'slide_delay', 'order', 'created')
     readonly_fields = ('image_tag', 'image_tag_prev', 'created')
 
 class QuestImageInline(admin.TabularInline):
