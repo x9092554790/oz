@@ -13,6 +13,7 @@ from .models import Banner
 from django.urls import reverse
 import random
 from django.http import Http404
+import json
 
 def index(request):
     quests = Quest.objects.order_by('in_construct', 'order')
@@ -65,7 +66,13 @@ def page_rewrite(request, page_url):
     elif page.name == 'animators':
         return animators(request)
     elif page.name == 'contacts':
-        return animators(contacts)
+        return animators(request)
+    elif page.name == 'agreement':	
+        return agreement(request)
+    elif page.name == 'shares':	
+        return shares(request)
+    elif page.name == 'guests':	
+        return guests(request)    
 
 def quest_get_remain_imgs(request):
     quest_id = request.GET.get('quest_id')
@@ -145,6 +152,38 @@ def animators(request):
     context = {'settings': settings, 'page_text_blocks': page_text_blocks, 'page_settings': page, 'imgs': imgs}
     return HttpResponse(template.render(context, request))
 
+def agreement(request):
+    settings = Settings.getDict()
+    settings['view'] = 'agreement'
+    page = Page.objects.get(name='agreement')
+    page_text_blocks = {pb['name']: pb['value'] for pb in page.pageblock_set.values()}
+    imgs = {i['name']: {'image': i['image'], 'order': i['order']} for i in
+            page.pageimage_set.values('image', 'name', 'order')}
+    template = loader.get_template('quest/agreement.html')
+    context = {'settings': settings, 'page_text_blocks': page_text_blocks, 'page_settings': page, 'imgs': imgs}
+    return HttpResponse(template.render(context, request))
+	
+def guests(request):
+	settings = Settings.getDict()
+	settings['view'] = 'guests'
+	page = Page.objects.get(name='guests')
+	page_text_blocks = {pb['name']: pb['value'] for pb in page.pageblock_set.values()}	
+	imgs = list(page.pageimage_set.order_by('order').values('image', 'name', 'order'))	
+	template = loader.get_template('quest/guests.html')
+	context = {'settings': settings, 'page_text_blocks': page_text_blocks, 'page_settings': page, 'imgs': imgs, 'imgs_str': json.dumps(imgs)}
+	return HttpResponse(template.render(context, request))
+	
+def shares(request):
+    settings = Settings.getDict()
+    settings['view'] = 'shares'
+    page = Page.objects.get(name='shares')
+    page_text_blocks = {pb['name']: pb['value'] for pb in page.pageblock_set.values()}
+    imgs = {i['name']: {'image': i['image'], 'order': i['order']} for i in
+            page.pageimage_set.values('image', 'name', 'order')}
+    template = loader.get_template('quest/shares.html')
+    context = {'settings': settings, 'page_text_blocks': page_text_blocks, 'page_settings': page, 'imgs': imgs}
+    return HttpResponse(template.render(context, request))
+	
 def contacts(request):
     settings = Settings.getDict()
     settings['view'] = 'contacts'

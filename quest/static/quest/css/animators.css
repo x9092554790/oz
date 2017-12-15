@@ -13,16 +13,16 @@ div.space-1, div.space-2, div.space-3 {
 }
 
 div.space-2 {
-    background-image: url("/media/quest_3/4");
+    background-image: url("/static/quest/imgs/new/anim_3.jpg");
 }
 
 div.space-3 {
-    background-image: url("/media/quest_5/6");
+    background-image: url("/static/quest/imgs/new/anim_2.jpg");
 }
 
 
 body {
-    background: url("/media/quest_4/6") !important;
+    background: url("/static/quest/imgs/new/anim_1.jpg") !important;
     background-attachment: fixed !important;
     background-position: 50% 0 !important;
 }

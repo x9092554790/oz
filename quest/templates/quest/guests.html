@@ -1,0 +1,202 @@
+{% extends 'quest/base2.html' %}
+{% load staticfiles %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'quest/css/guests.css' %}">
+	<link rel="stylesheet" href="{% static 'quest/css/photoswipe/photoswipe.css' %}">
+	<link rel="stylesheet" href="{% static 'quest/css/photoswipe/default-skin/default-skin.css' %}"> 
+{% endblock %}
+
+{% block content %}
+    <div id="guests-container"> 	
+        <div id="text-block-1">{{ page_text_blocks.text_block1|safe }}</div>
+		
+		<div class="my-gallery" itemscope itemtype="http://schema.org/ImageGallery">
+		{% for img in imgs %}
+			<figure style="display: inline" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+				<a href="/media/{{img.image}}" itemprop="contentUrl">
+					<img src="/media/{{img.image}}" itemprop="thumbnail"/>
+				</a>				
+			</figure>			
+		{% endfor %}
+		</div>
+		
+		<!-- Root element of PhotoSwipe. Must have class pswp. -->
+		<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+			<!-- Background of PhotoSwipe. 
+				 It's a separate element as animating opacity is faster than rgba(). -->
+			<div class="pswp__bg"></div>
+
+			<!-- Slides wrapper with overflow:hidden. -->
+			<div class="pswp__scroll-wrap">
+
+				<!-- Container that holds slides. 
+					PhotoSwipe keeps only 3 of them in the DOM to save memory.
+					Don't modify these 3 pswp__item elements, data is added later on. -->
+				<div class="pswp__container">
+					<div class="pswp__item"></div>
+					<div class="pswp__item"></div>
+					<div class="pswp__item"></div>
+				</div>
+
+				<!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+				<div class="pswp__ui pswp__ui--hidden">
+
+					<div class="pswp__top-bar">
+
+						<!--  Controls are self-explanatory. Order can be changed. -->
+
+						<div class="pswp__counter"></div>
+
+						<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+						<button class="pswp__button pswp__button--share" title="Share"></button>
+
+						<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+						<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+						<!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+						<!-- element will get class pswp__preloader--active when preloader is running -->
+						<div class="pswp__preloader">
+							<div class="pswp__preloader__icn">
+							  <div class="pswp__preloader__cut">
+								<div class="pswp__preloader__donut"></div>
+							  </div>
+							</div>
+						</div>
+					</div>
+
+					<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+						<div class="pswp__share-tooltip"></div> 
+					</div>
+
+					<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+					</button>
+
+					<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+					</button>
+
+					<div class="pswp__caption">
+						<div class="pswp__caption__center"></div>
+					</div>
+
+				</div>
+
+		</div>
+
+		</div>
+		
+    </div>
+{% endblock %}
+
+{% block js %}
+	<script src="{% static 'quest/js/photoswipe/photoswipe.min.js' %}"></script> 
+	<script src="{% static 'quest/js/photoswipe/photoswipe-ui-default.min.js' %}"></script> 
+	<script src="{% static 'quest/js/guests.js' %}"></script> 
+	
+	<script>
+		var pswpElement = document.querySelectorAll('.pswp')[0];
+		let items = JSON.parse({{"'"|add:imgs_str|safe|add:"'"}});
+		let wh_reg = /(_w(\d+))_h(\d+)/
+		var imgs = []
+		for(let i = 0; i < items.length; i++)
+		{			
+			let item = items[i];
+			let match = wh_reg.exec(item.name);
+			if(match && match.length > 2)
+			{
+				imgs.push({
+					src: "media/" + item.image,
+					w: match[2],
+					h: match[3]					
+					});						
+			}
+		}
+		
+		console.log(imgs);
+		
+		var closest = function closest(el, fn) {
+			return el && ( fn(el) ? el : closest(el.parentNode, fn) );
+		};
+		
+		var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
+			var gallery, options;
+									
+			// define options (if needed)
+			options = {
+				
+
+			};			
+			
+			options.index = parseInt(index, 10);
+
+			// exit if index not found
+			if( isNaN(options.index) ) {
+				return;
+			}
+
+			if(disableAnimation) {
+				options.showAnimationDuration = 0;
+			}
+
+			// Pass data to PhotoSwipe and initialize it
+			gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, imgs, options);
+			gallery.init();
+		};
+			
+		var onThumbnailsClick = function(e) {
+			e = e || window.event;
+			e.preventDefault ? e.preventDefault() : e.returnValue = false;
+
+			var eTarget = e.target || e.srcElement;
+
+			// find root element of slide
+			var clickedListItem = closest(eTarget, function(el) {
+				return (el.tagName && el.tagName.toUpperCase() === 'FIGURE');
+			});
+
+			if(!clickedListItem) {
+				return;
+			}
+
+			// find index of clicked item by looping through all child nodes
+			// alternatively, you may define index via data- attribute
+			var clickedGallery = clickedListItem.parentNode,
+				childNodes = clickedListItem.parentNode.childNodes,
+				numChildNodes = childNodes.length,
+				nodeIndex = 0,
+				index;
+
+			for (var i = 0; i < numChildNodes; i++) {
+				if(childNodes[i].nodeType !== 1) { 
+					continue; 
+				}
+
+				if(childNodes[i] === clickedListItem) {
+					index = nodeIndex;
+					break;
+				}
+				nodeIndex++;
+			}
+						
+
+
+
+			if(index >= 0) {
+				// open PhotoSwipe if valid index found
+				openPhotoSwipe( index, clickedGallery );
+			}
+			return false;
+		};
+	
+	
+		$('.my-gallery').click(onThumbnailsClick);
+	
+					
+	</script>
+	
+    <!--
+    <script src="{% static 'quest/js/photo-widget.js' %}"></script>
+    -->
+{% endblock %}
