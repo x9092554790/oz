@@ -164,11 +164,11 @@ nav {
 .feedback li {
   display: inline-block;
   position: relative; }
-.feedback .instagram_feedback {
-  left: -25px; }
-.feedback .vk {
-  top: 15px;
-  left: -15px; }
+/*.feedback .instagram_feedback {*/
+  /*left: -25px; }*/
+/*.feedback .vk {*/
+  /*top: 15px;*/
+  /*left: -15px; }*/
 .feedback ul {
   position: relative;
   float: left;}

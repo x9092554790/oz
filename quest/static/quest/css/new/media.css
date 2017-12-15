@@ -35,6 +35,44 @@
 	}
 }
 
+@keyframes vk_anim {
+    0%   {text-shadow: 0 0 0 gold;}
+    50% {text-shadow: 0 0 20px gold;}
+    100%   {text-shadow: 0 0 0 gold;}
+}
+
+.feedback li i{
+    animation-name: vk_anim;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+.feedback li{
+    margin-right: 1em;
+    margin-bottom: 1em;
+}
+
+.feedback li i{
+    text-align: center;
+    display: block;
+    white-space: pre;
+    min-width: 100px;
+}
+
+.feedback li i:before {
+    margin: 0 !important;
+}
+
+@media screen and (min-width: 1201px ) {
+    .feedback li i{
+        font-size: 22px;
+	}
+
+    .feedback li i:before {
+        font-size: 80px;
+    }
+}
+
 @media screen and (max-width: 1200px ){
 
 	#title-wrap{
@@ -50,23 +88,29 @@
 	.discount {
 	    max-width: 303px;
 	}
-	.feedback .vk{
-		left: 25px;
-		
-	}
+	/*.feedback .vk{*/
+		/*left: 25px;*/
+		/**/
+	/*}*/
 	.contacts{
 		float: right;
 		width: 40%;
 		padding-right: 2%;
 	}
 	
-	.feedback .instagram_feedback{
-		left: 20px;
-		
-	}
+	/*.feedback .instagram_feedback{*/
+		/*left: 20px;*/
+		/**/
+	/*}*/
 	.feedback li img{
 		max-width: 90px;
 	}
+    .feedback li i{
+        font-size: 18px;
+	}
+    .feedback li i:before {
+        font-size: 60px;
+    }
 	.img_d{
 		padding-left: 25px;
 	}
@@ -91,9 +135,9 @@
 	.feedback ul{
 		padding-left: 3%;
 	}
-	.feedback li {
-	    width: 120px;
-	}
+	/*.feedback li {*/
+	    /*width: 120px;*/
+	/*}*/
 
 	.join_us ul {
     	padding-left: 0;
@@ -126,9 +170,9 @@
 		top: 18%;
 	}
 
-	.feedback li {
-	    width: 105px;
-	}
+	/*.feedback li {*/
+	    /*width: 105px;*/
+	/*}*/
 
 	.shares .row {
 	    max-width: 900px;
@@ -215,9 +259,9 @@
     	font-size: 1.8rem;
 	}
 
-	.feedback li {
-	    width: 95px;
-	}
+	/*.feedback li {*/
+	    /*width: 95px;*/
+	/*}*/
 
 	.menu {
 	    padding: 25px 0;
@@ -258,17 +302,17 @@
 	    width: 43%;
 	}
 
-	.feedback .vk {
-	    top: 0;
-	}
+	/*.feedback .vk {*/
+	    /*top: 0;*/
+	/*}*/
 
-	.feedback .instagram_feedback {
-	    top: -15px;
-	}
+	/*.feedback .instagram_feedback {*/
+	    /*top: -15px;*/
+	/*}*/
 
-	.feedback li {
-	    width: 89px;
-	}
+	/*.feedback li {*/
+	    /*width: 89px;*/
+	/*}*/
 
 	.shares .row {
 	    max-width: 790px;
@@ -467,9 +511,16 @@
 	.feedback li img {
 	    max-width: 65px;
 	}
-	.feedback li {
-	    width: 67px;
+
+    .feedback li i{
+        font-size: 16px;
 	}
+    .feedback li i:before {
+        font-size: 50px;
+    }
+	/*.feedback li {*/
+	    /*width: 67px;*/
+	/*}*/
 	.feedback img.img_d {
 	    top: -25px;
 	    left: 148px;
@@ -666,6 +717,14 @@
 	.feedback li img {
 	    max-width: 50px;
 	}
+
+    .feedback li img, i {
+        font-size: 12px;
+    }
+
+    .feedback li i:before {
+        font-size: 40px;
+    }
 }
 @media screen and (max-width: 567px ) {
     .kvest_list > li {
@@ -713,9 +772,9 @@
 	    /*width: 130px;*/
 	}
 
-	.feedback .vk {
-	    top: 0;
-	}
+	/*.feedback .vk {*/
+	    /*top: 0;*/
+	/*}*/
 
 	.kvest h2 {
 	    font-size: 3.5rem;
