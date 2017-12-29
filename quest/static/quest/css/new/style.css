@@ -578,6 +578,14 @@ footer {
       right: 12px;
 }
 
+.kvest_list > li.age_4:after {
+  content: url(/static/quest/imgs/4+.png);
+      position:
+              absolute;
+      bottom: 12px;
+      right: 12px;
+}
+
 .kvest_list > li.age_12:after {
   content: url(/static/quest/imgs/12+.png);
       position: absolute;
