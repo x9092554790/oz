@@ -1,0 +1,78 @@
+{% extends 'quest/base2.html' %}
+{% load staticfiles %}
+{% load quest_tags %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'quest/css/new/flexslider.css' %}" type="text/css" media="screen" />
+    <link  href="{% static 'quest/css/new/kvest.css' %}?v={% settings_value 'VERSION' %}" rel="stylesheet" type="text/css" media="all">
+{% endblock %}
+
+{% block content %}
+
+
+    <div class="quest-carousel-wrap2">
+        {% quest_carousel 'quest-carousel' show.getImgs  %}
+        {% with vid=quest.getShowVid %}
+            {% if vid %}
+            {{ vid.widget | safe}}
+            <i class="fa fa-play-circle video-play" aria-hidden="true"></i>
+        {% endif %}
+        {% endwith %}
+        <div class="quest-carousel-shadow"></div>
+        <!--<div class="quest-carousel-info-add add_info tooltip_container">-->
+            <!--<span>-->
+                <!--{{ quest.view_count }}-->
+                <!--<i class="fa fa-eye" aria-hidden="true"></i>-->
+            <!--</span>-->
+            <!--<div class="tooltip">Сегодня этим квестом интересовалось {{ quest.view_count }} человек(а)</div>-->
+        <!--</div>-->
+        <div class="quest-carousel-shadow-add"></div>
+        <!--{% if quest.is_animator %}-->
+        <!--<div class="anim tooltip_container">-->
+            <!--<img src="{% static 'quest/imgs/animator.svg' %}">-->
+            <!--<div class="tooltip">Для этого квеста доступна услуга "Аниматор".</div>-->
+        <!--</div>-->
+        <!--{% endif %}-->
+    </div>
+
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="description">
+                <h2 class="kvest_title {% if show.age_value > 0 %}age_{{ show.age_value }}{% endif %}"><span>{{show.name}}</span></h2>
+                <ul class="data">
+                    <li class="time">{{show.duration_min}} мин.</li>
+                    <li class="members">{{show.players_min}} - {{show.players_max}}</li>
+                </ul>
+{#                <p class="gps"><span>{{ settings.address }} <span class="phone"><input type="tel" readonly name="phone" id="phone" value="{{ settings.phone }}"></span></span></p>#}
+                <p class="gps"><span>
+                    {% if show.address %}
+                        {{ show.address }}
+                    {% else %}
+                        {{ settings.address }}
+                    {% endif %}
+                    , тел. 
+                    {% if show.phone %}
+                        <a href="tel:{{ show.phone }}">{{ show.phone }}</a></span></p>
+                    {% else %}
+                        <a href="tel:{{ setting.full_phone }}">{{ settings.phone }}</a></span></p>
+                    {% endif %}
+                <p class="indenture" style="white-space: pre-wrap; text-align: justify;">{{show.desc|safe}}</p>
+                <div class="vidget">
+                    <span>Расскажите о нас друзьям!</span>
+                    <div class="pluso" data-background="transparent" data-options="big,square,line,horizontal,nocounter,theme=04" data-services="vkontakte,odnoklassniki,facebook,twitter,google,moimir"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'quest/js/common.js' %}"></script>
+    <script src="{% static 'quest/js/carousel2.js' %}"></script>
+    <script src="{% static 'quest/js/new/quest.js' %}" type="text/javascript"></script>
+    <script src="{% static 'quest/js/video.js' %}" type="text/javascript"></script>
+{% endblock %}

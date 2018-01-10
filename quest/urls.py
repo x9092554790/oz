@@ -18,4 +18,5 @@ urlpatterns = [
 
 
     url(r'^(?P<quest_name>[a-zA-Z0-9-]+)/$', views.quest_rewrite, name='quest-rewrite'),
+
 ]

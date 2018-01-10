@@ -30,6 +30,7 @@ urlpatterns = [
     url(r'^$', quest.views.index, name='index'),
     url(r'^err', views.handler404),
     url(r'^quest/', include('quest.urls')),
+    url(r'^show/', include('quest.show_urls')),
     url(r'^', include('quest.urls2')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

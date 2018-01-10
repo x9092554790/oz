@@ -1,0 +1,57 @@
+{% extends 'quest/base2.html' %}
+{% load staticfiles %}
+{% load quest_tags %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'quest/css/show-programs.css' %}?v={% settings_value 'VERSION' %}">
+{% endblock %}
+
+{% block content %}
+    <div id="show-programs-container">
+        <!--<div class="text-block">-->
+            <!--{{ page_text_blocks.text_block1|safe }}-->
+        <!--</div>-->
+
+       <div class="kvests">
+            <div class="container">
+                <div class="row">
+                    <ul class="kvest_list flex list_partners">
+                        {% for show in shows %}
+
+                            <li style="background: url(/media/{{show.getLogo}}) no-repeat;">
+                                <a href="{{ show.getUrl }}">
+                                    <div class="shadow"></div>
+                                    <!--<div class="add_shadow"></div>-->
+                                    <div class="info">
+                                        <h2>{{show.name}}</h2>
+                                        <span class="adress">{{ show.address }} <span class="phone"><input readonly type="tel" name="phone" id="phone" value="{{ show.phone }}"></span></span>
+                                        <ul class="data">
+                                            <li class="time">{{show.duration_min}} мин.</li>
+                                            <li class="members">{{show.players_min}} - {{show.players_max}}</li>
+                                        </ul>
+                                    </div>
+                                    <!--
+                                    <div class="add_info">
+                                        <span>
+                                            {{ quest.view_count }}
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                        </span>
+                                        <div class="tooltip">Сегодня этим квестом интересовалось {{ quest.view_count }} человек(а)</div>
+                                    </div>
+                                    -->
+                                </a>
+                            </li>
+
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+       </div>
+
+    </div>
+{% endblock %}
+
+{% block js %}
+    <!--
+    <script src="{% static 'quest/js/photo-widget.js' %}"></script>
+    -->
+{% endblock %}

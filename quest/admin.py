@@ -10,6 +10,7 @@ from .models import Discount
 from .models import Video
 from django import forms
 from .models import Banner
+from .models import *
 
 
 @admin.register(Banner)
@@ -17,6 +18,30 @@ class BannerAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'title', 'type', 'order', 'created')
     fields = ('name', 'type', 'url', 'title', 'content', 'image_tag', 'img', 'video', 'slide_delay', 'order', 'created')
     readonly_fields = ('image_tag', 'image_tag_prev', 'created')
+
+class ShowImageInline(admin.TabularInline):
+    model = ShowImage
+    fields = ('show', 'name', 'image_tag_prev', 'image', 'type', 'order', 'created')
+    readonly_fields = ('image_tag', 'image_tag_prev', 'created')
+
+@admin.register(Show)
+class ShowAdmin(admin.ModelAdmin):
+    inlines = [ShowImageInline]
+    list_display = ('id', 'name', 'desc', 'in_construct', 'order', 'created')
+    fields = ('name', 'desc', 'title_desc', 'address', 'phone', 'seo_url', 'seo_title', 'seo_description', 'price_desc', 'players_desc', 'age_desc', 'age_value',
+              'players_min', 'players_max', 'players_add', 'duration_min', 'is_new', 'is_with_actor', 'in_construct', 'is_partner', 'is_animator', 'order')
+    def formfield_for_dbfield(self, db_field, **kwargs):
+        formfield = super(ShowAdmin, self).formfield_for_dbfield(db_field, **kwargs)
+        if db_field.name in ['desc', 'price_desc', 'players_desc', 'age_desc']:
+            formfield.widget = forms.Textarea(attrs=formfield.widget.attrs)
+        return formfield
+
+@admin.register(ShowImage)
+class ShowImageAdmin(admin.ModelAdmin):
+    list_display = ('show', 'name', 'image', 'type', 'order', 'created')
+    fields = ('show', 'name', 'image_tag', 'image', 'type', 'order', 'created')
+    readonly_fields = ('image_tag', 'created')
+
 
 class QuestImageInline(admin.TabularInline):
     model = QuestImage
@@ -87,4 +112,10 @@ class DiscountAdmin(admin.ModelAdmin):
 class VideoAdmin(admin.ModelAdmin):
     list_display = ('quest', 'name', 'type', 'order', 'created')
     fields = ('quest', 'name', 'widget', 'desc', 'type', 'order', 'created')
+    readonly_fields = ('created', )
+
+@admin.register(VideoShow)
+class VideoShowAdmin(admin.ModelAdmin):
+    list_display = ('show', 'name', 'type', 'order', 'created')
+    fields = ('show', 'name', 'widget', 'desc', 'type', 'order', 'created')
     readonly_fields = ('created', )

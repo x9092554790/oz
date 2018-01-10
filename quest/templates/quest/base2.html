@@ -19,7 +19,8 @@
     {% block css %}{% endblock %}
 
 </head>
-<body {% if settings.view != 'index' %}class="nobody loading"{% endif %}>
+<!--<body {% if settings.view != 'index' %}class="nobody loading"{% endif %}>-->
+<body>
     <header>
         <div class="container">
             <div class="row">
@@ -29,7 +30,8 @@
 {#                    <span class="phone"><tel>{{settings.phone_full}}</tel></span>#}
                     <ul>
                         <li><a href="{% url 'index' %}">КВЕСТЫ</a></li>
-                        <li><a href="/novichkam">НОВИЧКАМ</a></li>
+                        <!--<li><a href="/novichkam">НОВИЧКАМ</a></li>-->
+                        <li><a href="/show-programs">ШОУ-ПРОГРАММЫ</a></li>
                         <li><a href="/prazdniki">ПРАЗДНИКИ</a></li>
                         <li><a href="/sertifikaty">СЕРТИФИКАТЫ</a></li>
                         <li><a href="/price">СТОИМОСТЬ</a></li>

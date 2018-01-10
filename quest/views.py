@@ -10,6 +10,7 @@ from .models import Settings
 from .models import Page
 from .models import Discount
 from .models import Banner
+from .models import *
 from django.urls import reverse
 import random
 from django.http import Http404
@@ -50,6 +51,18 @@ def quest_rewrite(request, quest_name):
     context = {'quest': quest, 'settings': settings, 'page_settings': page_settings}
     return HttpResponse(template.render(context, request))
 
+def show_rewrite(request, show_name):
+    template = loader.get_template('quest/show.html')
+    settings = Settings.getDict()
+    settings['view'] = 'show'
+    try:
+        show = Show.objects.get(seo_url=show_name)
+    except Exception as ex:
+        raise Http404()
+    page_settings = {'title': show.seo_title, 'description': show.seo_description}
+    context = {'show': show, 'settings': settings, 'page_settings': page_settings}
+    return HttpResponse(template.render(context, request))
+
 def page_rewrite(request, page_url):
     try:
         page = Page.objects.get(url=page_url)
@@ -72,7 +85,20 @@ def page_rewrite(request, page_url):
     elif page.name == 'shares':	
         return shares(request)
     elif page.name == 'guests':	
-        return guests(request)    
+        return guests(request)
+    elif page.name == 'show-programs':
+        return show_programs(request)
+
+def show_programs(request):
+    settings = Settings.getDict()
+    settings['view'] = 'show-programs'
+    page = Page.objects.get(name='show-programs')
+    shows = Show.objects.order_by('in_construct', 'order')
+    page_text_blocks = {pb['name']: pb['value'] for pb in page.pageblock_set.values()}
+    page_imgs = {pi['name']: pi['image'] for pi in page.pageimage_set.values()}
+    template = loader.get_template('quest/show-programs.html')
+    context = {'settings': settings, 'page_text_blocks': page_text_blocks, 'imgs': page_imgs, 'page_settings': page, 'shows': shows}
+    return HttpResponse(template.render(context, request))
 
 def quest_get_remain_imgs(request):
     quest_id = request.GET.get('quest_id')
